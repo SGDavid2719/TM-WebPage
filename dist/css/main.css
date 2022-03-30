@@ -1,0 +1,15 @@
+.navbar-brand > img {
+    filter: invert(55%) sepia(100%) saturate(3.5);
+}
+
+.masthead-heading.text-uppercase {
+    color: orange;
+}
+
+header.masthead {
+    padding-top: 10.5rem;
+}
+
+.portfolio-link > .img-fluid:hover {
+    opacity: 0.85;
+}
