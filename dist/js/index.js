@@ -229,10 +229,20 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Duration = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Duration__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Duration__Strong__Text__Node = document.createTextNode("Duración: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Duration__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Duration__Strong__Text__Node);
+
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Duration__Text__Node = document.createTextNode("<strong>Duración:</strong> " + p__Film.duration.name);
+    let l__Row__Second__Col__Div__List__Item__Duration__Text__Node = document.createTextNode(p__Film.duration.name);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Duration.appendChild(l__Row__Second__Col__Div__List__Item__Duration__Strong);
     l__Row__Second__Col__Div__List__Item__Duration.appendChild(l__Row__Second__Col__Div__List__Item__Duration__Text__Node);
 
     // Append item into list
@@ -243,10 +253,20 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Country = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Country__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Country__Strong__Text__Node = document.createTextNode("País: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Country__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Country__Strong__Text__Node);
+
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Country__Text__Node = document.createTextNode("<strong>País:</strong> " + p__Film.countryOfOrigin.name);
+    let l__Row__Second__Col__Div__List__Item__Country__Text__Node = document.createTextNode(p__Film.countryOfOrigin.name);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Country.appendChild(l__Row__Second__Col__Div__List__Item__Country__Strong);
     l__Row__Second__Col__Div__List__Item__Country.appendChild(l__Row__Second__Col__Div__List__Item__Country__Text__Node);
 
     // Append item into list
@@ -257,10 +277,20 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Director = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Director__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node = document.createTextNode("Dirección: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Director__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node);
+
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Director__Text__Node = document.createTextNode("<strong>Dirección:</strong> " + p__Film.director.name);
+    let l__Row__Second__Col__Div__List__Item__Director__Text__Node = document.createTextNode(p__Film.director.name);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__Item__Director__Strong);
     l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__Item__Director__Text__Node);
 
     // Append item into list
@@ -271,10 +301,20 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Music = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Music__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node = document.createTextNode("Música: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Music__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node);
+
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = document.createTextNode("<strong>Música:</strong> " + p__Film.musicBy.name);
+    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = document.createTextNode(p__Film.musicBy.name);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Music.appendChild(l__Row__Second__Col__Div__List__Item__Music__Strong);
     l__Row__Second__Col__Div__List__Item__Music.appendChild(l__Row__Second__Col__Div__List__Item__Music__Text__Node);
 
     // Append item into list
@@ -285,6 +325,15 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Actor = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Actor__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node = document.createTextNode("Reparto: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Actor__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node);
+
     // For each actor
     let l__Actors = "";
     for (l__Item in p__Film.actor) {
@@ -292,9 +341,10 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     }
 
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = document.createTextNode("<strong>Reparto:</strong> " + l__Actors);
+    let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = document.createTextNode(l__Actors);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Strong);
     l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Text__Node);
 
     // Append item into list
@@ -305,10 +355,20 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Production__Company = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Production__Company__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Production__Company__Strong__Text__Node = document.createTextNode("Productora: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Production__Company__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company__Strong__Text__Node);
+
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node = document.createTextNode("<strong>Productora:</strong> " + p__Film.productionCompany.name);
+    let l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node = document.createTextNode(p__Film.productionCompany.name);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Production__Company.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company__Strong);
     l__Row__Second__Col__Div__List__Item__Production__Company.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node);
 
     // Append item into list
@@ -319,6 +379,15 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Genre = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Genre__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Genre__Strong__Text__Node = document.createTextNode("Género: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Genre__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Genre__Strong__Text__Node);
+
     // For each actor
     let l__Genres = "";
     for (l__Item in p__Film.genre) {
@@ -326,9 +395,10 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     }
 
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Genre__Text__Node = document.createTextNode("<strong>Género:</strong> " + l__Genres);
+    let l__Row__Second__Col__Div__List__Item__Genre__Text__Node = document.createTextNode(l__Genres);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Genre.appendChild(l__Row__Second__Col__Div__List__Item__Genre__Strong);
     l__Row__Second__Col__Div__List__Item__Genre.appendChild(l__Row__Second__Col__Div__List__Item__Genre__Text__Node);
 
     // Append item into list
@@ -339,10 +409,20 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create row second col div list item
     let l__Row__Second__Col__Div__List__Item__Sinopsis = document.createElement("li");
 
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Sinopsis__Strong = document.createElement("strong");
+
+    // Create row second col div list item strong text node
+    let l__Row__Second__Col__Div__List__Item__Sinopsis__Strong__Text__Node = document.createTextNode("Sinopsis: ");
+
+    // Append text node into strong
+    l__Row__Second__Col__Div__List__Item__Sinopsis__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis__Strong__Text__Node);
+
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node = document.createTextNode("<strong>Sinopsis:</strong> " + p__Film.description);
+    let l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node = document.createTextNode(p__Film.description);
 
     // Append text node into item
+    l__Row__Second__Col__Div__List__Item__Sinopsis.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis__Strong);
     l__Row__Second__Col__Div__List__Item__Sinopsis.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node);
 
     // Append item into list
@@ -351,11 +431,186 @@ function GenerateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Append list (ul) into the second col (div)
     l__Row__Second__Col__Div.appendChild(l__Row__Second__Col__Div__List);
 
+    // COMMENTS SECTION
+
+    // Create opinion section div
+    let l__Row__Opinion__Section = document.createElement("div");
+    // Format div
+    l__Row__Opinion__Section.setAttribute("id", "opinionSection");
+
+    // Create opinion section div form
+    let l__Row__Opinion__Section__Form = document.createElement("form");
+    // Format form
+    l__Row__Opinion__Section__Form.setAttribute("class", "text-lg-start row");
+
+    // NAME FORM COLUMN
+
+    // Create opinion section div form name column
+    let l__Row__Opinion__Section__Form__Name__Col = document.createElement("div");
+    // Format form
+    l__Row__Opinion__Section__Form__Name__Col.setAttribute("class", "col-md-12 col-lg-5");
+
+    // Create opinion section div form name column label
+    let l__Row__Opinion__Section__Form__Name__Col__Label = document.createElement("label");
+    // Format form
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("class", "text-lg-start");
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("for", "nameInput");
+
+    // Create opinion section form name label text node
+    let l__Row__Opinion__Section__Form__Name__Col__Label__Text__Node = document.createTextNode("Añade tu nombre");
+
+    // Append opinion section form name label text node into label
+    l__Row__Opinion__Section__Form__Name__Col__Label.appendChild(l__Row__Opinion__Section__Form__Name__Col__Label__Text__Node);
+
+    // Create opinion section div form name column input
+    let l__Row__Opinion__Section__Form__Name__Col__Input = document.createElement("input");
+    // Format form
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("type", "text");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("maxlength", "40");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("class", "form-control");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("id", "nameInput");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("aria-describedby", "nameInputHelp");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("placeholder", "p.e. David");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("required", true);
+
+    // Append content into col
+    l__Row__Opinion__Section__Form__Name__Col.appendChild(l__Row__Opinion__Section__Form__Name__Col__Label);
+    l__Row__Opinion__Section__Form__Name__Col.appendChild(l__Row__Opinion__Section__Form__Name__Col__Input);
+
+    // Append col into form
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Name__Col);
+
+    // EMPTY FORM COLUMN
+
+    // Create opinion section div form empty column
+    let l__Row__Opinion__Section__Form__Empty__Col = document.createElement("div");
+    // Format form
+    l__Row__Opinion__Section__Form__Empty__Col.setAttribute("class", "col-lg-7");
+
+    // Append col into form
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Empty__Col);
+
+    // COMMENT FORM COLUMN
+
+    // Create opinion section div form comment column
+    let l__Row__Opinion__Section__Form__Comment__Col = document.createElement("div");
+    // Format form
+    l__Row__Opinion__Section__Form__Comment__Col.setAttribute("class", "col-md-12 col-lg-9 mt-3");
+
+    // Create opinion section div form name column label
+    let l__Row__Opinion__Section__Form__Comment__Col__Label = document.createElement("label");
+    // Format form
+    l__Row__Opinion__Section__Form__Comment__Col__Label.setAttribute("class", "text-lg-start");
+    l__Row__Opinion__Section__Form__Comment__Col__Label.setAttribute("for", "criticInput");
+
+    // Create opinion section form name label text node
+    let l__Row__Opinion__Section__Form__Comment__Col__Label__Text__Node = document.createTextNode("Añade tu crítica");
+
+    // Append opinion section form name label text node into label
+    l__Row__Opinion__Section__Form__Comment__Col__Label.appendChild(l__Row__Opinion__Section__Form__Comment__Col__Label__Text__Node);
+
+    // Create opinion section div form name column input
+    let l__Row__Opinion__Section__Form__Comment__Col__Input = document.createElement("input");
+    // Format form
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("type", "text");
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("maxlength", "80");
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("class", "form-control");
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("id", "criticInput");
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("aria-describedby", "criticInputHelp");
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("placeholder", "Escribe una opinión");
+    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("required", true);
+
+    // Append content into col
+    l__Row__Opinion__Section__Form__Comment__Col.appendChild(l__Row__Opinion__Section__Form__Comment__Col__Label);
+    l__Row__Opinion__Section__Form__Comment__Col.appendChild(l__Row__Opinion__Section__Form__Comment__Col__Input);
+
+    // Append col into form
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Comment__Col);
+
+    // SCORE FORM COLUMN
+
+    // Create opinion section div form comment column
+    let l__Row__Opinion__Section__Form__Score__Col = document.createElement("div");
+    // Format form
+    l__Row__Opinion__Section__Form__Score__Col.setAttribute("class", "col-md-12 col-lg-3 mt-3 align-items-end");
+
+    // Create opinion section div form name column label
+    let l__Row__Opinion__Section__Form__Score__Col__Label = document.createElement("label");
+    // Format form
+    l__Row__Opinion__Section__Form__Score__Col__Label.setAttribute("class", "text-lg-start");
+    l__Row__Opinion__Section__Form__Score__Col__Label.setAttribute("for", "scoreInput");
+
+    // Create opinion section form name label text node
+    let l__Row__Opinion__Section__Form__Score__Col__Label__Text__Node = document.createTextNode("Añade una puntuación");
+
+    // Append opinion section form name label text node into label
+    l__Row__Opinion__Section__Form__Score__Col__Label.appendChild(l__Row__Opinion__Section__Form__Score__Col__Label__Text__Node);
+
+    // Create opinion section div form name column input
+    let l__Row__Opinion__Section__Form__Score__Col__Input = document.createElement("input");
+    // Format form
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("type", "number");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("min", "0");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("max", "10");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("class", "form-control");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("id", "scoreInput");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("aria-describedby", "scoreInputHelp");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("placeholder", "p.e. 5");
+    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("required", true);
+
+    // Append content into col
+    l__Row__Opinion__Section__Form__Score__Col.appendChild(l__Row__Opinion__Section__Form__Score__Col__Label);
+    l__Row__Opinion__Section__Form__Score__Col.appendChild(l__Row__Opinion__Section__Form__Score__Col__Input);
+
+    // Append col into form
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Score__Col);
+
+    // EMPTY FORM COLUMN
+
+    // Create opinion section div form empty column
+    let l__Row__Opinion__Section__Form__Second__Empty__Col = document.createElement("div");
+    // Format form
+    l__Row__Opinion__Section__Form__Second__Empty__Col.setAttribute("class", "col-md-12 col-lg-11");
+
+    // Append col into form
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Second__Empty__Col);
+
+    // ADD FORM COLUMN
+
+    // Create opinion section div form comment column
+    let l__Row__Opinion__Section__Form__Add__Col = document.createElement("div");
+    // Format form
+    l__Row__Opinion__Section__Form__Add__Col.setAttribute("class", "col-lg-1 d-flex flex-row-reverse mt-3");
+
+    // Create opinion section div form name column label
+    let l__Row__Opinion__Section__Form__Add__Col__Button = document.createElement("button");
+    // Format form
+    l__Row__Opinion__Section__Form__Add__Col__Button.setAttribute("id", ("film" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Add__Col__Button.setAttribute("class", "btn btn-primary");
+    l__Row__Opinion__Section__Form__Add__Col__Button.setAttribute("type", "submit");
+
+    // Create opinion section form name label text node
+    let l__Row__Opinion__Section__Form__Add__Col__Button__Text__Node = document.createTextNode("Añadir");
+
+    // Append opinion section form name label text node into label
+    l__Row__Opinion__Section__Form__Add__Col__Button.appendChild(l__Row__Opinion__Section__Form__Add__Col__Button__Text__Node);
+
+    // Append content into col
+    l__Row__Opinion__Section__Form__Add__Col.appendChild(l__Row__Opinion__Section__Form__Add__Col__Button);
+
+    // Append col into form
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Add__Col);
+
+    // Append form into comments section
+    l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form);
+
+
     // Append content into row
     l__Row__Div.appendChild(l__Row__H2);
     l__Row__Div.appendChild(l__Row__P);
     l__Row__Div.appendChild(l__Row__Col__Div);
     l__Row__Div.appendChild(l__Row__Second__Col__Div);
+    l__Row__Div.appendChild(l__Row__Opinion__Section);
 
     // Append row into container
     l__Container__Div.appendChild(l__Row__Div);
