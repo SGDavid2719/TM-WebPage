@@ -111,8 +111,6 @@ function handleBasicSearch() {
 
     if (l__Filtered) generatePosters(l__Filtered__Films);
     else generatePosters(g__Films);
-
-    document.getElementById("basicSearchForm").reset();
 }
 
 function handleAdvancedSearch() {

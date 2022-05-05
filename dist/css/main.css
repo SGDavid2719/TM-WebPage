@@ -49,7 +49,9 @@ a.portfolio-link > .img-fluid {
 }
 
 @media only screen and (max-width: 1000px) {
-    #searchForm {
+    #basicSearchForm,
+    #basicSearchBtn,
+    #advancedSearch {
         display: none;
     }
 }
