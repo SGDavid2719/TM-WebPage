@@ -9,7 +9,7 @@ function handleSubmit (p__Form__Container, p__Scrollview__Container) {
 
         let l__Card__Header = document.createElement("div");
         l__Card__Header.textContent = l__Data[0].value;
-        l__Card__Header.setAttribute("class", "card-header");
+        l__Card__Header.setAttribute("class", "card-header fw-bold");
 
         let l__Card__Body = document.createElement("div");
         l__Card__Body.setAttribute("class", "card-body text-dark");
@@ -31,6 +31,12 @@ function handleSubmit (p__Form__Container, p__Scrollview__Container) {
         l__Cards.appendChild(l__Card);
 
         document.getElementById(p__Form__Container).reset();
+
+        let l__Film__Index = p__Form__Container.split("commentForm")[1];
+
+        let l__Comment = { "@type": "text", "author": { "@type:": "Person", "name": l__Data[0].value}, "contentRating": {"@type": "Rating", "name": l__Data[1].value }, "name": l__Data[2].value }; 
+
+        g__Films[l__Film__Index].comment.push(l__Comment);        
 
         NewAlert('info', "Comentario añadido", ' ', false, "Close", false, 1000);
     } else {

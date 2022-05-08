@@ -586,6 +586,34 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent");
     l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film__Index));
 
+    for (let l__Comment__Index in p__Film.comment) {
+        let l__Card = document.createElement("div");
+        l__Card.setAttribute("class", "card border-dark mx-3 mx-lg-4 pb-3 mb-3");
+
+        let l__Card__Header = document.createElement("div");
+        l__Card__Header.textContent = p__Film.comment[l__Comment__Index].author.name;
+        l__Card__Header.setAttribute("class", "card-header fw-bold");
+
+        let l__Card__Body = document.createElement("div");
+        l__Card__Body.setAttribute("class", "card-body text-dark");
+
+        let l__Card__Body__Title = document.createElement("h5");
+        l__Card__Body__Title.textContent = p__Film.comment[l__Comment__Index].contentRating.name + "/5";
+        l__Card__Body__Title.setAttribute("class", "card-title");
+
+        let l__Card__Body__Text = document.createElement("p");
+        l__Card__Body__Text.textContent = p__Film.comment[l__Comment__Index].name;
+        l__Card__Body__Text.setAttribute("class", "card-text");
+
+        l__Card__Body.appendChild(l__Card__Body__Title);
+        l__Card__Body.appendChild(l__Card__Body__Text);
+
+        l__Card.appendChild(l__Card__Header);
+        l__Card.appendChild(l__Card__Body);
+
+        l__Row__Opinion__Section__Comments__View.appendChild(l__Card);
+    }
+
     l__Row__Opinion__Section__Comments.appendChild(l__Row__Opinion__Section__Comments__View);
 
 

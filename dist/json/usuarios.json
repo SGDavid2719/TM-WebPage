@@ -1,0 +1,16 @@
+[
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "email": "test@gmail.com",
+      "identifier": "0",
+      "name": "David"
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "email": "test2@gmail.com",
+        "identifier": "1",
+        "name": "Pedro"
+    }
+  ]

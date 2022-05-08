@@ -71,6 +71,20 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=jUm88F3MEbQ"
     },
+    "comment": [ 
+      {
+        "@type": "text",
+        "author": {
+          "@type": "Person",
+          "name": "David"
+        },
+        "contentRating": {
+          "@type": "Rating",
+          "name": "4"
+        },
+        "name": "Esto es un test"
+      } 
+    ],
     "image": [
       {
         "@type": "ImageObject",
@@ -154,6 +168,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=-y1Qr1dRb6I"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -237,6 +252,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=TcMBFSGVi1c"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -320,6 +336,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=sY1S34973zA"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -403,6 +420,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=EIyZqNbZQI8"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -486,6 +504,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=JZOSwUpHLdA&ab_channel=VaDeTrailers"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -569,6 +588,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=BDCXk0ZI1Gg&ab_channel=sacanellcarla"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -652,6 +672,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=5_4PoAC2KTQ&ab_channel=Buenavistacine"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",
@@ -735,6 +756,7 @@
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=RwU2s0Qs2ys&ab_channel=20thCenturyStudiosEspa%C3%B1a"
     },
+    "comment": [ ],
     "image": [
       {
         "@type": "ImageObject",

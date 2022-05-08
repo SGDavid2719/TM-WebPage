@@ -1,9 +1,9 @@
 // Globals
-var g__Films;
+var g__Films = [], g__Users = [];
 
 $(document).ready(function () {
 
-    $('#loaderModal').modal('toggle');
+    //$('#loaderModal').modal('toggle');
 
     fetch('./json/peliculas.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
@@ -25,6 +25,17 @@ $(document).ready(function () {
                 });
             }
         });
+
+    fetch('./json/usuarios.json')
+        .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
+        .then((result) => result.json())
+        .then((result) => {
+            g__Users = result;
+
+            // DELETE
+            console.log(g__Users);
+
+        })
     
     // Basic search button
 	$("#basicSearchBtn").click(function () {
@@ -34,7 +45,23 @@ $(document).ready(function () {
     // Advanced search button
 	$("#advancedSearchBtn").click(function () {
 		handleAdvancedSearch();
-	});    
+	});
 
-    setTimeout(() => { $("#loaderModal").modal("hide") }, 1500);
+    // Sign in button
+	$("#signInFormBtn").click(function () {
+		handleSignIn();
+	});
+
+    // Log in button
+	$("#loginFormBtn").click(function () {
+		handleLogIn();
+	});
+
+    //setTimeout(() => { $("#loaderModal").modal("hide") }, 1500);
+
+    ScrollReveal().reveal('.masthead');
+    ScrollReveal().reveal('#films', { delay: 1000 });
+    ScrollReveal().reveal('#team', { delay: 500 });
+    ScrollReveal().reveal('#clients', { delay: 500 });
+    ScrollReveal().reveal('.footer', { delay: 500 });
 });
