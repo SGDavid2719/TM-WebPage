@@ -55,3 +55,18 @@ a.portfolio-link > .img-fluid {
         display: none;
     }
 }
+
+.scrollviewContent {
+    height: 300px;
+    overflow-y: scroll;
+    padding-left: 0;
+}
+
+.scrollviewContent > .card {
+    transition: transform 1s;
+}
+
+.scrollviewContent > .card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}

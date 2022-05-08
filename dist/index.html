@@ -20,10 +20,15 @@
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/loader.css" rel="stylesheet" />
+    <!-- Sweet Alert 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"
+        integrity="sha256-jAlCMntTd9fGH88UcgMsYno5+/I0cUCWdSjJ9qHMFRY=" crossorigin="anonymous"></script>
     <!-- OWN JS -->
     <script src="js/index.js"></script>
     <script src="js/posters.js"></script>
     <script src="js/filter.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/form.js"></script>
 </head>
 
 <body id="page-top">
@@ -115,6 +120,21 @@
                 <div class="modal-footer">
                     <button id="advancedSearchBtn" class="btn btn-outline-primary my-2 my-sm-0"
                         data-bs-dismiss="modal">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <div id="loaderModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div id="loaderModalContent" class="modal-content">
+                <div class="modal-body">
+                    <div id="loadPanel">
+                        <div id="preloader">
+                            <div id="loader"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

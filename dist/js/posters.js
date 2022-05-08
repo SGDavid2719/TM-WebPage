@@ -421,31 +421,27 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create opinion section div
     let l__Row__Opinion__Section = document.createElement("div");
     // Format div
-    l__Row__Opinion__Section.setAttribute("id", "opinionSection");
+    l__Row__Opinion__Section.setAttribute("id", ("opinionSection" + p__Film__Index));
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Form = document.createElement("form");
     // Format form
     l__Row__Opinion__Section__Form.setAttribute("class", "text-lg-start row");
+    l__Row__Opinion__Section__Form.setAttribute("id", ("commentForm" + p__Film__Index));
 
-    // NAME FORM COLUMN
+    // NICKNAME INPUT
 
     // Create opinion section div form name column
     let l__Row__Opinion__Section__Form__Name__Col = document.createElement("div");
-    // Format form
-    l__Row__Opinion__Section__Form__Name__Col.setAttribute("class", "col-md-12 col-lg-5");
+    // Format column
+    l__Row__Opinion__Section__Form__Name__Col.setAttribute("class", "col-12 col-lg-6 p-1");
 
     // Create opinion section div form name column label
     let l__Row__Opinion__Section__Form__Name__Col__Label = document.createElement("label");
     // Format form
-    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("class", "text-lg-start");
-    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("for", "nameInput");
-
-    // Create opinion section form name label text node
-    let l__Row__Opinion__Section__Form__Name__Col__Label__Text__Node = document.createTextNode("Añade tu nombre");
-
-    // Append opinion section form name label text node into label
-    l__Row__Opinion__Section__Form__Name__Col__Label.appendChild(l__Row__Opinion__Section__Form__Name__Col__Label__Text__Node);
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("class", "text-lg-start form-label");
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("for", ("inputNickname" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Name__Col__Label.textContent = "Añade tu nombre";
 
     // Create opinion section div form name column input
     let l__Row__Opinion__Section__Form__Name__Col__Input = document.createElement("input");
@@ -453,141 +449,152 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("type", "text");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("maxlength", "40");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("id", "nameInput");
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("id", ("inputNickname" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("name", ("inputNickname" + p__Film__Index));
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("aria-describedby", "nameInputHelp");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("placeholder", "p.e. David");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("required", true);
 
-    // Append content into col
     l__Row__Opinion__Section__Form__Name__Col.appendChild(l__Row__Opinion__Section__Form__Name__Col__Label);
     l__Row__Opinion__Section__Form__Name__Col.appendChild(l__Row__Opinion__Section__Form__Name__Col__Input);
 
-    // Append col into form
     l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Name__Col);
 
-    // EMPTY FORM COLUMN
+    // RATE SELECT
 
-    // Create opinion section div form empty column
-    let l__Row__Opinion__Section__Form__Empty__Col = document.createElement("div");
+    // Create opinion section div form rate column
+    let l__Row__Opinion__Section__Form__Rate__Col = document.createElement("div");
+    // Format column
+    l__Row__Opinion__Section__Form__Rate__Col.setAttribute("class", "col-12 col-lg-6 p-1");
+
+    // Create opinion section div form rate column label
+    let l__Row__Opinion__Section__Form__Rate__Col__Label = document.createElement("label");
     // Format form
-    l__Row__Opinion__Section__Form__Empty__Col.setAttribute("class", "col-lg-7");
+    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("class", "text-lg-start form-label");
+    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("for", ("inputRate" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Rate__Col__Label.textContent = "Puntuación";
 
-    // Append col into form
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Empty__Col);
-
-    // COMMENT FORM COLUMN
-
-    // Create opinion section div form comment column
-    let l__Row__Opinion__Section__Form__Comment__Col = document.createElement("div");
+    // Create opinion section div form rate column select
+    let l__Row__Opinion__Section__Form__Rate__Col__Select = document.createElement("select");
     // Format form
-    l__Row__Opinion__Section__Form__Comment__Col.setAttribute("class", "col-md-12 col-lg-9 mt-3");
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("class", "form-select");
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("id", ("inputRate" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("name", ("inputRate" + p__Film__Index));
+
+    // Create opinion section div form rate column select option
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1 = document.createElement("option");
+    // Format form
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1.setAttribute("selected", true);
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1.textContent = "1";
+
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1);
+
+    // Create opinion section div form rate column select option
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2 = document.createElement("option");
+    // Format form
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2.textContent = "2";
+
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2);
+
+    // Create opinion section div form rate column select option
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3 = document.createElement("option");
+    // Format form
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3.textContent = "3";
+
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3);
+
+    // Create opinion section div form rate column select option
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4 = document.createElement("option");
+    // Format form
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4.textContent = "4";
+
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4);
+
+    // Create opinion section div form rate column select option
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5 = document.createElement("option");
+    // Format form
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5.textContent = "5";
+
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5);
+
+    l__Row__Opinion__Section__Form__Rate__Col.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Label);
+    l__Row__Opinion__Section__Form__Rate__Col.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select);
+
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Rate__Col);
+
+    // OPINION TEXTAREA
+
+    // Create opinion section div form name column
+    let l__Row__Opinion__Section__Form__Opinion__Col = document.createElement("div");
+    // Format column
+    l__Row__Opinion__Section__Form__Opinion__Col.setAttribute("class", "col-12 p-1");
 
     // Create opinion section div form name column label
-    let l__Row__Opinion__Section__Form__Comment__Col__Label = document.createElement("label");
+    let l__Row__Opinion__Section__Form__Opinion__Col__Label = document.createElement("label");
     // Format form
-    l__Row__Opinion__Section__Form__Comment__Col__Label.setAttribute("class", "text-lg-start");
-    l__Row__Opinion__Section__Form__Comment__Col__Label.setAttribute("for", "criticInput");
-
-    // Create opinion section form name label text node
-    let l__Row__Opinion__Section__Form__Comment__Col__Label__Text__Node = document.createTextNode("Añade tu crítica");
-
-    // Append opinion section form name label text node into label
-    l__Row__Opinion__Section__Form__Comment__Col__Label.appendChild(l__Row__Opinion__Section__Form__Comment__Col__Label__Text__Node);
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("class", "text-lg-start form-label");
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("for", ("inputComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.textContent = "Añade un comentario";
 
     // Create opinion section div form name column input
-    let l__Row__Opinion__Section__Form__Comment__Col__Input = document.createElement("input");
+    let l__Row__Opinion__Section__Form__Opinion__Col__Input = document.createElement("textarea");
     // Format form
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("type", "text");
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("maxlength", "80");
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("id", "criticInput");
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("aria-describedby", "criticInputHelp");
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("placeholder", "Escribe una opinión");
-    l__Row__Opinion__Section__Form__Comment__Col__Input.setAttribute("required", true);
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("class", "form-control");
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("id", ("inputComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("name", ("inputComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("aria-describedby", "opinionTextareaHelp");
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("placeholder", "p.e. Esta película...");
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("required", true);
 
-    // Append content into col
-    l__Row__Opinion__Section__Form__Comment__Col.appendChild(l__Row__Opinion__Section__Form__Comment__Col__Label);
-    l__Row__Opinion__Section__Form__Comment__Col.appendChild(l__Row__Opinion__Section__Form__Comment__Col__Input);
+    l__Row__Opinion__Section__Form__Opinion__Col.appendChild(l__Row__Opinion__Section__Form__Opinion__Col__Label);
+    l__Row__Opinion__Section__Form__Opinion__Col.appendChild(l__Row__Opinion__Section__Form__Opinion__Col__Input);
 
-    // Append col into form
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Comment__Col);
+    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Opinion__Col);
 
-    // SCORE FORM COLUMN
+    // SUBMIT BUTTON
 
-    // Create opinion section div form comment column
-    let l__Row__Opinion__Section__Form__Score__Col = document.createElement("div");
+    // Create opinion section div form
+    let l__Row__Opinion__Section__Form__Button = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Score__Col.setAttribute("class", "col-md-12 col-lg-3 mt-3 align-items-end");
+    l__Row__Opinion__Section__Form__Button.setAttribute("class", "row");
 
-    // Create opinion section div form name column label
-    let l__Row__Opinion__Section__Form__Score__Col__Label = document.createElement("label");
+    // Create opinion section div form
+    let l__Row__Opinion__Section__Form__Button__Col = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Score__Col__Label.setAttribute("class", "text-lg-start");
-    l__Row__Opinion__Section__Form__Score__Col__Label.setAttribute("for", "scoreInput");
+    l__Row__Opinion__Section__Form__Button__Col.setAttribute("class", "col-12 p-1 d-flex justify-content-end");
 
-    // Create opinion section form name label text node
-    let l__Row__Opinion__Section__Form__Score__Col__Label__Text__Node = document.createTextNode("Añade una puntuación");
-
-    // Append opinion section form name label text node into label
-    l__Row__Opinion__Section__Form__Score__Col__Label.appendChild(l__Row__Opinion__Section__Form__Score__Col__Label__Text__Node);
-
-    // Create opinion section div form name column input
-    let l__Row__Opinion__Section__Form__Score__Col__Input = document.createElement("input");
+    // Create opinion section div form
+    let l__Row__Opinion__Section__Form__Button__Col__Btn = document.createElement("button");
     // Format form
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("type", "number");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("min", "0");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("max", "10");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("id", "scoreInput");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("aria-describedby", "scoreInputHelp");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("placeholder", "p.e. 5");
-    l__Row__Opinion__Section__Form__Score__Col__Input.setAttribute("required", true);
+    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("class", "btn btn-primary");
+    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("id", ("addComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Button__Col__Btn.textContent = "Añade tu comentario";
 
-    // Append content into col
-    l__Row__Opinion__Section__Form__Score__Col.appendChild(l__Row__Opinion__Section__Form__Score__Col__Label);
-    l__Row__Opinion__Section__Form__Score__Col.appendChild(l__Row__Opinion__Section__Form__Score__Col__Input);
+    l__Row__Opinion__Section__Form__Button__Col.appendChild(l__Row__Opinion__Section__Form__Button__Col__Btn);
+    l__Row__Opinion__Section__Form__Button.appendChild(l__Row__Opinion__Section__Form__Button__Col);
 
-    // Append col into form
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Score__Col);
+    // COMMENTS
 
-    // EMPTY FORM COLUMN
-
-    // Create opinion section div form empty column
-    let l__Row__Opinion__Section__Form__Second__Empty__Col = document.createElement("div");
+    // Create opinion section div form
+    let l__Row__Opinion__Section__Comments = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Second__Empty__Col.setAttribute("class", "col-md-12 col-lg-11");
+    l__Row__Opinion__Section__Comments.setAttribute("class", "row pt-4 p-1");
 
-    // Append col into form
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Second__Empty__Col);
-
-    // ADD FORM COLUMN
-
-    // Create opinion section div form comment column
-    let l__Row__Opinion__Section__Form__Add__Col = document.createElement("div");
+    // Create opinion section div form
+    let l__Row__Opinion__Section__Comments__View = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Add__Col.setAttribute("class", "col-lg-1 d-flex flex-row-reverse mt-3");
+    l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent");
+    l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film__Index));
 
-    // Create opinion section div form name column label
-    let l__Row__Opinion__Section__Form__Add__Col__Button = document.createElement("button");
-    // Format form
-    l__Row__Opinion__Section__Form__Add__Col__Button.setAttribute("id", ("film" + p__Film__Index));
-    l__Row__Opinion__Section__Form__Add__Col__Button.setAttribute("class", "btn btn-primary");
-    l__Row__Opinion__Section__Form__Add__Col__Button.setAttribute("type", "submit");
+    l__Row__Opinion__Section__Comments.appendChild(l__Row__Opinion__Section__Comments__View);
 
-    // Create opinion section form name label text node
-    let l__Row__Opinion__Section__Form__Add__Col__Button__Text__Node = document.createTextNode("Añadir");
-
-    // Append opinion section form name label text node into label
-    l__Row__Opinion__Section__Form__Add__Col__Button.appendChild(l__Row__Opinion__Section__Form__Add__Col__Button__Text__Node);
-
-    // Append content into col
-    l__Row__Opinion__Section__Form__Add__Col.appendChild(l__Row__Opinion__Section__Form__Add__Col__Button);
-
-    // Append col into form
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Add__Col);
 
     // Append form into comments section
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form);
+    // Append form into comments section
+    l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form__Button);
+    // Append form into comments section
+    l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Comments);
 
 
     // Append content into row
