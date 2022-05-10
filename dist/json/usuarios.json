@@ -2,15 +2,17 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "email": "test@gmail.com",
-      "identifier": "0",
+      "identifier": 0,
+      "email": "david@email.com",
+      "description": "1",
       "name": "David"
     },
     {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "email": "test2@gmail.com",
-        "identifier": "1",
-        "name": "Pedro"
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "identifier": "1",
+      "email": "pedro@email.com",
+      "description": "1",
+      "name": "Pedro"
     }
   ]

@@ -29,6 +29,7 @@ function generateFilmPoster(p__FilmsContainer, p__Film, p__Film__Index) {
     // Create film div container
     let l__Film__Div = document.createElement("div");
     // Format div
+    l__Film__Div.setAttribute("id", ("film"+p__Film__Index));
     l__Film__Div.setAttribute("class", "col-lg-4 col-sm-6 mb-4");
 
     // Create item (div)
@@ -124,6 +125,7 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create close modal div 
     let l__Close__Modal__Div = document.createElement("div");
     // Format div
+    l__Close__Modal__Div.setAttribute("id", ("filmCloseModalBtn" + p__Film__Index));
     l__Close__Modal__Div.setAttribute("class", "close-modal");
     l__Close__Modal__Div.setAttribute("data-bs-dismiss", "modal");
 
@@ -426,7 +428,7 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create opinion section div form
     let l__Row__Opinion__Section__Form = document.createElement("form");
     // Format form
-    l__Row__Opinion__Section__Form.setAttribute("class", "text-lg-start row");
+    l__Row__Opinion__Section__Form.setAttribute("class", "text-lg-start row d-none");
     l__Row__Opinion__Section__Form.setAttribute("id", ("commentForm" + p__Film__Index));
 
     // NICKNAME INPUT
@@ -556,7 +558,8 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create opinion section div form
     let l__Row__Opinion__Section__Form__Button = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Button.setAttribute("class", "row");
+    l__Row__Opinion__Section__Form__Button.setAttribute("id", ("commentFormBtn" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Button.setAttribute("class", "row d-none");
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Form__Button__Col = document.createElement("div");
@@ -572,6 +575,21 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
 
     l__Row__Opinion__Section__Form__Button__Col.appendChild(l__Row__Opinion__Section__Form__Button__Col__Btn);
     l__Row__Opinion__Section__Form__Button.appendChild(l__Row__Opinion__Section__Form__Button__Col);
+
+    // LOGIN
+
+    let l__Login__Section = document.createElement("div");
+    l__Login__Section.setAttribute("id", "loginModalBtn");
+    l__Login__Section.setAttribute("class", "row py-4 px-5 border rounded d-flex justify-content-center");
+    let l__Login__Section__Button = document.createElement("button");
+    l__Login__Section__Button.setAttribute("type", "button");
+    l__Login__Section__Button.setAttribute("class", "btn btn-primary w-50");
+    l__Login__Section__Button.setAttribute("data-bs-toggle", "modal");
+    l__Login__Section__Button.setAttribute("data-bs-target", "#userModal");
+    l__Login__Section__Button.textContent = "Sign in to leave a comment";
+
+    l__Login__Section.appendChild(l__Login__Section__Button);
+
 
     // COMMENTS
 
@@ -621,6 +639,8 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form);
     // Append form into comments section
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form__Button);
+    // Append login into comments section
+    l__Row__Opinion__Section.appendChild(l__Login__Section);
     // Append form into comments section
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Comments);
 

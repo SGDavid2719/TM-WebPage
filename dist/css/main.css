@@ -74,3 +74,12 @@ a.portfolio-link > .img-fluid {
 #loginModalDialog {
     max-width: 60%;
 }
+
+.form-check {
+    padding-left: 2rem;
+}
+
+#userModalDialog,
+#userSettingsModal {
+    max-width: 60%;
+}

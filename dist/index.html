@@ -62,17 +62,153 @@
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
-                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarResponsive">
+                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#films">Peliculas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
-                        <li class="nav-item"><a type="button" class="nav-link" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Inicio sesión</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a id="userSettings" class="dropdown-item d-none" data-bs-toggle="modal"
+                                        data-bs-target="#userSettingsModal">Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a id="userLogOutBtn" class="dropdown-item d-none">Log out</a></li>
+                                <li><a id="userLogInBtn" class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#userModal">Log in</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Settings modal -->
+    <div class="modal fade" id="userSettingsModal" tabindex="-1" aria-labelledby="userSettingsModalLabel"
+        aria-hidden="true">
+        <div id="userSettingsModalDialog" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userSettingsModalLabel">User settings</h5>
+                    <button id="userSettingsModalCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form id="settingsForm" class="row g-3 needs-validation" novalidate>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="settingsName" id="settingsName"
+                                        placeholder="example name">
+                                    <label for="settingsName"><i class="fa-solid fa-user">
+                                            New Name</i></label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" name="settingsEmail" id="settingsEmail"
+                                        placeholder="name@example.com">
+                                    <label for="sinsettingsEmailgInEmail"><i class="fa-solid fa-at"> New Email
+                                            address</i></label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name="settingsPassword"
+                                        id="settingsPassword" placeholder="secure password">
+                                    <label for="settingsPassword"><i class="fa-solid fa-key"> New Password</i></label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name="settingsPasswordConfirmation"
+                                        id="settingsPasswordConfirmation" placeholder="secure password">
+                                    <label for="settingsPasswordConfirmation"><i class="fa-solid fa-key"> Confirm New
+                                            Password</i></label>
+                                </div>
+                                <div class="col-12">
+                                    <button id="settingsBtn" class="btn btn-primary">Sign In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log in and sign in modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div id="userModalDialog" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userModalLabel">Modal title</h5>
+                    <button id="userModalCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <form id="singInForm" class="row g-3 needs-validation" novalidate>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" name="singInEmail" id="singInEmail"
+                                        placeholder="name@example.com">
+                                    <label for="singInEmail"><i class="fa-solid fa-at"></i> Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name="signInPassword"
+                                        id="signInPassword" placeholder="secure password">
+                                    <label for="signInPassword"><i class="fa-solid fa-key"></i> Password</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Show password
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <button id="singInBtn" class="btn btn-primary">Sign In</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <form id="logInForm" class="row g-3 needs-validation" novalidate>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="logInName" id="logInName"
+                                        placeholder="example name">
+                                    <label for="logInName"><i class="fa-solid fa-user"></i> Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" name="logInEmail" id="logInEmail"
+                                        placeholder="name@example.com">
+                                    <label for="logInEmail"><i class="fa-solid fa-at"></i> Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name="logInPassword" id="logInPassword"
+                                        placeholder="secure password">
+                                    <label for="logInPassword"><i class="fa-solid fa-key"></i> Password</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="logInCheck">
+                                    <label class="form-check-label" for="logInCheck">
+                                        Show password
+                                    </label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" name="logInPasswordConfirmation"
+                                        id="logInPasswordConfirmation" placeholder="secure password">
+                                    <label for="logInPasswordConfirmation"><i class="fa-solid fa-key"></i> Confirm
+                                        Password</label>
+                                </div>
+                                <div class="col-12">
+                                    <button id="logInBtn" class="btn btn-primary">Log In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModalLabel"
@@ -124,67 +260,6 @@
                 <div class="modal-footer">
                     <button id="advancedSearchBtn" class="btn btn-outline-primary my-2 my-sm-0"
                         data-bs-dismiss="modal">Buscar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div id="loginModalDialog" class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Inicio de sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 col-md-6 px-5">
-                            <form id="singInForm" class="row">
-                                <div class="col-12 pb-2">
-                                    <label for="signInNameInput">Nombre o email</label>
-                                    <input type="text" name="signInNameInput" id="signInNameInput"
-                                        class="form-control border-primary" placeholder="Introduzca su nombre o email">
-                                </div>
-                                <div class="col-12 pb-2">
-                                    <label for="signInPasswordInput">Contraseña</label>
-                                    <input type="text" name="signInPasswordInput" id="signInPasswordInput"
-                                        class="form-control border-primary" placeholder="Introduzca la contraseña">
-                                </div>
-                            </form>
-                            <button id="signInFormBtn" class="btn btn-outline-primary my-2 my-sm-0"
-                                data-bs-dismiss="modal">Sign in</button>
-                        </div>
-                        <div class="col-12 col-md-6 px-5">
-                            <form id="loginForm" class="row">
-                                <div class="col-12 pb-2">
-                                    <label for="logInNameInput">Nombre</label>
-                                    <input type="text" name="logInNameInput" id="logInNameInput"
-                                        class="form-control border-primary" placeholder="Introduzca un nombre">
-                                </div>
-                                <div class="col-12 pb-2">
-                                    <label for="logInEmailInput">Email</label>
-                                    <input type="text" name="logInEmailInput" id="logInEmailInput"
-                                        class="form-control border-primary" placeholder="Introduzca un email">
-                                </div>
-                                <div class="col-12 pb-2">
-                                    <label for="logInPasswordInput">Contraseña</label>
-                                    <input type="text" name="logInPasswordInput" id="logInPasswordInput"
-                                        class="form-control border-primary" placeholder="Introduzca una contraseña">
-                                </div>
-                                <div class="col-12 pb-2">
-                                    <label for="logInPasswordConfirmationInput">Confirme la Contraseña</label>
-                                    <input type="text" name="logInPasswordConfirmationInput"
-                                        id="logInPasswordConfirmationInput" class="form-control border-primary"
-                                        placeholder="Confirme la contraseña">
-                                </div>
-                            </form>
-                            <button id="loginFormBtn" class="btn btn-outline-primary my-2 my-sm-0"
-                                data-bs-dismiss="modal">Login</button>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
