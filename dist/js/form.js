@@ -88,7 +88,7 @@ function handleSubmit (p__Form__Container, p__Scrollview__Container) {
 
         let l__Comment = { "@type": "text", "author": { "@type:": "Person", "name": l__Data[0].value}, "contentRating": {"@type": "Rating", "name": l__Data[1].value }, "name": l__Data[2].value }; 
 
-        g__Films[l__Film__Index].comment.push(l__Comment);        
+        g__Films[l__Film__Index].comment.push(l__Comment);
 
         // NEW
         if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;

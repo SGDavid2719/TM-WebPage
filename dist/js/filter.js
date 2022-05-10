@@ -99,18 +99,30 @@ function handleBasicSearch() {
 
     console.log(l__Form__Data)
 
-    let l__Filtered = false;
-
     let l__Filtered__Films = [];
     if (l__Form__Data[0].value != '') {
         l__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.name.toLowerCase().includes(l__Form__Data[0].value.toLowerCase())))];
-        l__Filtered = true;
     }
 
     clearPosters();
 
-    if (l__Filtered) generatePosters(l__Filtered__Films);
-    else generatePosters(g__Films);
+    if (l__Filtered__Films.length == 0) l__Filtered__Films = [...g__Films];
+
+    generatePosters(l__Filtered__Films);
+
+    // Iterate over each film
+    for (let l__Film__Index in l__Filtered__Films) {
+        $(("#addComment" + l__Film__Index)).click(function () {
+            handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
+        });
+
+        // NEW
+        $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
+            // Clear settings form on modal close
+            document.getElementById(("commentForm" + l__Film__Index)).reset();
+        });
+
+    }
 }
 
 function handleAdvancedSearch() {
@@ -168,8 +180,23 @@ function handleAdvancedSearch() {
 
     clearPosters();
 
-    if (l__Filtered) generatePosters(l__Filtered__Films);
-    else generatePosters(g__Films);
+    if (l__Filtered__Films.length == 0) l__Filtered__Films = [...g__Films];
+
+    generatePosters(l__Filtered__Films);
+
+    // Iterate over each film
+    for (let l__Film__Index in l__Filtered__Films) {
+        $(("#addComment" + l__Film__Index)).click(function () {
+            handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
+        });
+
+        // NEW
+        $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
+            // Clear settings form on modal close
+            document.getElementById(("commentForm" + l__Film__Index)).reset();
+        });
+
+    }
 
     document.getElementById("advancedSearchForm").reset();
 }
