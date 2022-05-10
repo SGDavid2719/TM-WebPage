@@ -114,6 +114,9 @@ $(document).ready(function () {
 
     // NEW
     $("#userLogOutBtn").click(function (event) {
+
+        NewAlert('info', ("Hasta la próxima " + g__Logged__User.name), ' ', false, "Close", false, 1000);
+
         // Set logged user to undefined
         g__Logged__User = undefined;
 
@@ -123,11 +126,14 @@ $(document).ready(function () {
         $("#userLogInBtn").removeClass("d-none");
 
         // Show login button and hide comments form
-        $("#loginModalBtn").removeClass("d-none");
+        
         for (let l__Film__Index in g__Films) {
+            $(("#loginModalBtn" + l__Film__Index)).removeClass("d-none");
             $(("#commentForm" + l__Film__Index)).addClass("d-none");
             $(("#commentFormBtn" + l__Film__Index)).addClass("d-none");
         }
+
+        
     });
 
     // NEW
@@ -182,13 +188,12 @@ $(document).ready(function () {
                 $("#userLogInBtn").addClass("d-none");
 
                 // Hide log in button and show comment form
-                $("#loginModalBtn").addClass("d-none");
                 for (let l__Film__Index in g__Films) {
+                    $(("#loginModalBtn" + l__Film__Index)).addClass("d-none");
                     $(("#commentForm" + l__Film__Index)).removeClass("d-none");
                     $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
                 }
                 
-
                 $("#userModal").modal("hide")
             } else {
                 // Show error
@@ -243,9 +248,8 @@ $(document).ready(function () {
                 $("#userLogInBtn").addClass("d-none");
 
                 // Hide log in button and show comment form
-                $("#loginModalBtn").addClass("d-none");
-
                 for (let l__Film__Index in g__Films) {
+                    $(("#loginModalBtn" + l__Film__Index)).addClass("d-none");
                     $(("#commentForm" + l__Film__Index)).removeClass("d-none");
                     $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
                 }

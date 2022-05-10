@@ -579,7 +579,7 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // LOGIN
 
     let l__Login__Section = document.createElement("div");
-    l__Login__Section.setAttribute("id", "loginModalBtn");
+    l__Login__Section.setAttribute("id", ("loginModalBtn" + p__Film__Index));
     l__Login__Section.setAttribute("class", "row py-4 px-5 border rounded d-flex justify-content-center");
     let l__Login__Section__Button = document.createElement("button");
     l__Login__Section__Button.setAttribute("type", "button");
