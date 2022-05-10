@@ -12,6 +12,8 @@ function generatePosters(p__Films) {
         generateFilmPoster(l__FilmsContainer, p__Films[l__Index], l__Index);
 
         generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
+
+        //fetchYoutubeVideo(p__Films[l__Index].trailer.name, ("youtubeVideo" + l__Index));
     }
 }
 
@@ -176,30 +178,12 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     l__Row__Col__Div.setAttribute("class", "col-lg-6");
 
     // Create row col modal body div 
-    let l__Row__Col__Modal__Body__Div = document.createElement("div");
-    // Format div
-    l__Row__Col__Modal__Body__Div.setAttribute("class", "modal-body");
-
-    // Create row col modal body div 
-    let l__Row__Col__Modal__Body__Div__Link = document.createElement("a");
+    let l__Row__Col__IFrame = document.createElement("iframe");
     // Format a
-    l__Row__Col__Modal__Body__Div__Link.setAttribute("href", p__Film.trailer.name);
-
-    // Create row col modal body div img
-    let l__Row__Col__Modal__Body__Div__Link__Img = document.createElement("img");
-    // Format img
-    l__Row__Col__Modal__Body__Div__Link__Img.setAttribute("class", "img-fluid d-block mx-auto");
-    l__Row__Col__Modal__Body__Div__Link__Img.setAttribute("src", p__Film.image[1].name);
-    l__Row__Col__Modal__Body__Div__Link__Img.setAttribute("alt", (p__Film.name + " trailer"));
-
-    // Append image (img) into modal body link (a)
-    l__Row__Col__Modal__Body__Div__Link.appendChild(l__Row__Col__Modal__Body__Div__Link__Img);
-
-    // Append link (a) into modal body (div)
-    l__Row__Col__Modal__Body__Div.appendChild(l__Row__Col__Modal__Body__Div__Link);
+    l__Row__Col__IFrame.setAttribute("id", ("youtubeVideo" + p__Film__Index));
 
     // Append modal body (div) into row col (div)
-    l__Row__Col__Div.appendChild(l__Row__Col__Modal__Body__Div);
+    l__Row__Col__Div.appendChild(l__Row__Col__IFrame);
 
     // Create row second col div 
     let l__Row__Second__Col__Div = document.createElement("div");
