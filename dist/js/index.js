@@ -3,7 +3,7 @@ var g__Films = [], g__Users = [], g__Logged__User = undefined;
 
 $(document).ready(function () {
 
-    //$('#loaderModal').modal('toggle');
+    $('#loaderModal').modal('toggle');
 
     fetch('./json/peliculas.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
@@ -87,7 +87,7 @@ $(document).ready(function () {
         if (g__Logged__User != undefined) document.getElementById("inputNickname").value = g__Logged__User.name;
     });
 
-    //setTimeout(() => { $("#loaderModal").modal("hide") }, 1500);
+    setTimeout(() => { $("#loaderModal").modal("hide") }, 1500);
 
     ScrollReveal().reveal('.masthead');
     ScrollReveal().reveal('#films', { delay: 1000 });

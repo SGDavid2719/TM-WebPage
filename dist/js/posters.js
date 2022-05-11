@@ -14,7 +14,7 @@ function generatePosters(p__Films) {
 
         generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
 
-        //fetchYoutubeVideo(p__Films[l__Index].trailer.name, ("youtubeVideo" + l__Index));
+        fetchYoutubeVideo(p__Films[l__Index].trailer.name, ("youtubeVideo" + l__Index));
     }
 }
 
@@ -769,7 +769,7 @@ function handleEditComment(comments, commentIndex, filmIndex) {
 
 function handleDeleteComment(pDeleteCommentFilmIndex, pDeleteCommentIndex) {
     let lFilteredFilms = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
-    
+
     var cloneArray = lFilteredFilms[pDeleteCommentFilmIndex].comment.slice();
 
     cloneArray.splice(pDeleteCommentIndex,1);
