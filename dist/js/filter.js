@@ -115,9 +115,7 @@ function handleBasicSearch() {
 
 function handleAdvancedSearch() {
     let l__Form__Data = $("#advancedSearchForm").serializeArray();
-
-    let l__Filtered = false;
-
+    
     const [filmName, filmGenre, filmReleasedYear, filmCountry] = l__Form__Data;
 
     console.log(filmName)

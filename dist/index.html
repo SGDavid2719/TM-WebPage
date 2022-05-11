@@ -74,13 +74,13 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a id="userSettings" class="dropdown-item d-none" data-bs-toggle="modal"
-                                        data-bs-target="#userSettingsModal">Settings</a></li>
+                                        data-bs-target="#userSettingsModal">Ajustes</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a id="userLogOutBtn" class="dropdown-item d-none">Log out</a></li>
+                                <li><a id="userLogOutBtn" class="dropdown-item d-none">Cerrar sesión</a></li>
                                 <li><a id="userLogInBtn" class="dropdown-item" data-bs-toggle="modal"
-                                        data-bs-target="#userModal">Log in</a></li>
+                                        data-bs-target="#userModal">Iniciar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -95,7 +95,7 @@
         <div id="userSettingsModalDialog" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="userSettingsModalLabel">User settings</h5>
+                    <h5 class="modal-title" id="userSettingsModalLabel">Ajustes de usuario</h5>
                     <button id="userSettingsModalCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -106,28 +106,28 @@
                                 <div class="form-floating">
                                     <input type="text" class="form-control" name="settingsName" id="settingsName"
                                         placeholder="example name">
-                                    <label for="settingsName"><i class="fa-solid fa-user"></i> New Name</label>
+                                    <label for="settingsName"><i class="fa-solid fa-user"></i> Nuevo nombre</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="email" class="form-control" name="settingsEmail" id="settingsEmail"
                                         placeholder="name@example.com">
-                                    <label for="sinsettingsEmailgInEmail"><i class="fa-solid fa-at"></i> New Email
-                                        address</label>
+                                    <label for="sinsettingsEmailgInEmail"><i class="fa-solid fa-at"></i> Nuevo
+                                        correo</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="password" class="form-control" name="settingsPassword"
                                         id="settingsPassword" placeholder="secure password">
-                                    <label for="settingsPassword"><i class="fa-solid fa-key"></i> New Password</label>
+                                    <label for="settingsPassword"><i class="fa-solid fa-key"></i> Nueva
+                                        contraseña</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="password" class="form-control" name="settingsPasswordConfirmation"
                                         id="settingsPasswordConfirmation" placeholder="secure password">
-                                    <label for="settingsPasswordConfirmation"><i class="fa-solid fa-key"></i> Confirm
-                                        New
-                                        Password</label>
+                                    <label for="settingsPasswordConfirmation"><i class="fa-solid fa-key"></i> Confirma
+                                        nueva contraseña</label>
                                 </div>
                                 <div class="col-12">
-                                    <button id="settingsBtn" class="btn btn-primary">Sign In</button>
+                                    <button id="settingsBtn" class="btn btn-primary">Registrarse</button>
                                 </div>
                             </form>
                         </div>
@@ -142,7 +142,7 @@
         <div id="userModalDialog" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="userModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="userModalLabel">Registrarse</h5>
                     <button id="userModalCloseBtn" type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -153,21 +153,21 @@
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" name="singInEmail" id="singInEmail"
                                         placeholder="name@example.com">
-                                    <label for="singInEmail"><i class="fa-solid fa-at"></i> Email address</label>
+                                    <label for="singInEmail"><i class="fa-solid fa-at"></i> Correo electrónico</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="password" class="form-control" name="signInPassword"
                                         id="signInPassword" placeholder="secure password">
-                                    <label for="signInPassword"><i class="fa-solid fa-key"></i> Password</label>
+                                    <label for="signInPassword"><i class="fa-solid fa-key"></i> Contraseña</label>
                                 </div>
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" value="" id="signInCheck">
                                     <label class="form-check-label" for="signInCheck">
-                                        Show password
+                                        Mostrar contraseña
                                     </label>
                                 </div>
                                 <div class="col-12">
-                                    <button id="singInBtn" class="btn btn-primary">Sign In</button>
+                                    <button id="singInBtn" class="btn btn-primary">Iniciar sesión</button>
                                 </div>
                             </form>
                         </div>
@@ -176,32 +176,32 @@
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="logInName" id="logInName"
                                         placeholder="example name">
-                                    <label for="logInName"><i class="fa-solid fa-user"></i> Name</label>
+                                    <label for="logInName"><i class="fa-solid fa-user"></i> Nombre</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" name="logInEmail" id="logInEmail"
                                         placeholder="name@example.com">
-                                    <label for="logInEmail"><i class="fa-solid fa-at"></i> Email address</label>
+                                    <label for="logInEmail"><i class="fa-solid fa-at"></i> Correo electrónico</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="password" class="form-control" name="logInPassword" id="logInPassword"
                                         placeholder="secure password">
-                                    <label for="logInPassword"><i class="fa-solid fa-key"></i> Password</label>
+                                    <label for="logInPassword"><i class="fa-solid fa-key"></i> Contraseña</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="logInCheck">
                                     <label class="form-check-label" for="logInCheck">
-                                        Show password
+                                        Mostrar contraseña
                                     </label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="password" class="form-control" name="logInPasswordConfirmation"
                                         id="logInPasswordConfirmation" placeholder="secure password">
-                                    <label for="logInPasswordConfirmation"><i class="fa-solid fa-key"></i> Confirm
-                                        Password</label>
+                                    <label for="logInPasswordConfirmation"><i class="fa-solid fa-key"></i> Confirmar
+                                        contraseña/label>
                                 </div>
                                 <div class="col-12">
-                                    <button id="logInBtn" class="btn btn-primary">Log In</button>
+                                    <button id="logInBtn" class="btn btn-primary">Registrarse</button>
                                 </div>
                             </form>
                         </div>

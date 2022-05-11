@@ -181,6 +181,7 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     let l__Row__Col__IFrame = document.createElement("iframe");
     // Format a
     l__Row__Col__IFrame.setAttribute("id", ("youtubeVideo" + p__Film__Index));
+    l__Row__Col__IFrame.setAttribute("class", "modalIframe");
 
     // Append modal body (div) into row col (div)
     l__Row__Col__Div.appendChild(l__Row__Col__IFrame);
