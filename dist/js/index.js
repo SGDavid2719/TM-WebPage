@@ -16,23 +16,8 @@ $(document).ready(function () {
 
             generatePosters(g__Films);
             fillFilters();
-        })
-        .then(() => {
-            // Iterate over each film
-            for (let l__Film__Index in g__Films) {
-                $(("#addComment" + l__Film__Index)).click(function () {
-                    handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
-                });
-
-                // NEW
-                $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
-                    // Clear settings form on modal close
-                    document.getElementById(("commentForm" + l__Film__Index)).reset();
-                });
-
-            }
+            enablePostersButtons(g__Films);
         });
-
     fetch('./json/usuarios.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
         .then((result) => result.json())

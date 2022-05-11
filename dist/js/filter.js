@@ -1,4 +1,4 @@
-var l__Distinct__Genres__Array = [], l__Distinct__Countries__Array = [], l__Distinct__Years__Array = [];
+var l__Distinct__Genres__Array = [], l__Distinct__Countries__Array = [], l__Distinct__Years__Array = [], g__Filtered__Films = [];
 
 function fillFilters() {
     
@@ -99,30 +99,18 @@ function handleBasicSearch() {
 
     console.log(l__Form__Data)
 
-    let l__Filtered__Films = [];
-    if (l__Form__Data[0].value != '') {
-        l__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.name.toLowerCase().includes(l__Form__Data[0].value.toLowerCase())))];
-    }
+    g__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.name.toLowerCase().includes(l__Form__Data[0].value.toLowerCase())))];
 
     clearPosters();
 
-    if (l__Filtered__Films.length == 0) l__Filtered__Films = [...g__Films];
+    if (g__Filtered__Films.length == 0) g__Filtered__Films = [...g__Films];
 
-    generatePosters(l__Filtered__Films);
+    generatePosters(g__Filtered__Films);
 
-    // Iterate over each film
-    for (let l__Film__Index in l__Filtered__Films) {
-        $(("#addComment" + l__Film__Index)).click(function () {
-            handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
-        });
+    if (g__Logged__User != undefined) enableAddComments(g__Filtered__Films);
+    else disableAddComments();
 
-        // NEW
-        $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
-            // Clear settings form on modal close
-            document.getElementById(("commentForm" + l__Film__Index)).reset();
-        });
-
-    }
+    enablePostersButtons(g__Filtered__Films);
 }
 
 function handleAdvancedSearch() {
@@ -130,73 +118,96 @@ function handleAdvancedSearch() {
 
     let l__Filtered = false;
 
-    let l__Filtered__Films = [];
+    const [filmName, filmGenre, filmReleasedYear, filmCountry] = l__Form__Data;
 
-    if (l__Form__Data[0].value != '') {
-        l__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.name.toLowerCase().includes(l__Form__Data[0].value.toLowerCase())))];
-        l__Filtered = true;
+    console.log(filmName)
+
+    g__Filtered__Films = [];
+
+    // Filter by name
+    if (filmName.value != '') {
+        g__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.name.toLowerCase().includes(filmName.value.toLowerCase())))];
     }
 
-    if (l__Form__Data[1].value != 'None') {
-        if (l__Filtered) {
-            for (l__Film in l__Filtered__Films) {
-                console.log(l__Filtered__Films[l__Film]);
-                for (l__Genre in l__Filtered__Films[l__Film].genre) {
-                    if (l__Filtered__Films[l__Film].genre[l__Genre].name == l__Form__Data[1].value) {
-                        l__Filtered__Films.push(l__Filtered__Films[l__Film]);
+    // Filter by genre
+    if (filmGenre.value != 'None') {
+        if (g__Filtered__Films.length > 0) {
+            for (l__Film in g__Filtered__Films) {
+                for (l__Genre in g__Filtered__Films[l__Film].genre) {
+                    if (g__Filtered__Films[l__Film].genre[l__Genre].name == filmGenre.value) {
+                        g__Filtered__Films.push(g__Filtered__Films[l__Film]);
                     }
                 }
             }
-            l__Filtered__Films = [...new Set(l__Filtered__Films)];
+            g__Filtered__Films = [...new Set(g__Filtered__Films)];
         } else {
             for (l__Film in g__Films) {
-                console.log(g__Films[l__Film]);
                 for (l__Genre in g__Films[l__Film].genre) {
-                    if (g__Films[l__Film].genre[l__Genre].name == l__Form__Data[1].value) {
-                        l__Filtered__Films.push(g__Films[l__Film]);
+                    if (g__Films[l__Film].genre[l__Genre].name == filmGenre.value) {
+                        g__Filtered__Films.push(g__Films[l__Film]);
                     }
                 }
             }
-            l__Filtered__Films = [...new Set(l__Filtered__Films)];
-            l__Filtered = true;
+        }
+        g__Filtered__Films = [...new Set(g__Filtered__Films)];
+    }
+
+    // Filter by release year
+    if (filmReleasedYear.value != 'None') {
+        if (g__Filtered__Films.length > 0) {
+            g__Filtered__Films = [...new Set(g__Filtered__Films.filter(l__Film => l__Film.releasedEvent.name == filmReleasedYear.value))];
+        } else {
+            g__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.releasedEvent.name == filmReleasedYear.value))];
+        }
+    }
+    
+    // Filter by country
+    if (filmCountry.value != 'None') {
+        if (g__Filtered__Films.length > 0) {
+            g__Filtered__Films = [...new Set(g__Filtered__Films.filter(l__Film => l__Film.countryOfOrigin.name == filmCountry.value))];
+        } else {
+            g__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.countryOfOrigin.name == filmCountry.value))];
         }
     }
 
-    if (l__Form__Data[2].value != 'None') {
-        if (l__Filtered) l__Filtered__Films = [...new Set(l__Filtered__Films.filter(l__Film => l__Film.releasedEvent.name == l__Form__Data[2].value))];
-        else {
-            l__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.releasedEvent.name == l__Form__Data[2].value))];
-            l__Filtered = true;
-        }
-    }
+    console.log(l__Form__Data)
+    console.log(g__Filtered__Films)
 
-    if (l__Form__Data[3].value != 'None') {
-        if (l__Filtered) l__Filtered__Films = [...new Set(l__Filtered__Films.filter(l__Film => l__Film.countryOfOrigin.name == l__Form__Data[3].value))];
-        else {
-            l__Filtered__Films = [...new Set(g__Films.filter(l__Film => l__Film.countryOfOrigin.name == l__Form__Data[3].value))];
-            l__Filtered = true;
-        }
-    }
+    // if (l__Form__Data[1].value != 'None') {
+    //     if (l__Filtered) {
+    //         for (l__Film in g__Filtered__Films) {
+    //             console.log(g__Filtered__Films[l__Film]);
+    //             for (l__Genre in g__Filtered__Films[l__Film].genre) {
+    //                 if (g__Filtered__Films[l__Film].genre[l__Genre].name == l__Form__Data[1].value) {
+    //                     g__Filtered__Films.push(g__Filtered__Films[l__Film]);
+    //                 }
+    //             }
+    //         }
+    //         g__Filtered__Films = [...new Set(g__Filtered__Films)];
+    //     } else {
+    //         for (l__Film in g__Films) {
+    //             console.log(g__Films[l__Film]);
+    //             for (l__Genre in g__Films[l__Film].genre) {
+    //                 if (g__Films[l__Film].genre[l__Genre].name == l__Form__Data[1].value) {
+    //                     g__Filtered__Films.push(g__Films[l__Film]);
+    //                 }
+    //             }
+    //         }
+    //         g__Filtered__Films = [...new Set(g__Filtered__Films)];
+    //         l__Filtered = true;
+    //     }
+    // }
 
     clearPosters();
 
-    if (l__Filtered__Films.length == 0) l__Filtered__Films = [...g__Films];
+    if (g__Filtered__Films.length == 0) g__Filtered__Films = [...g__Films];
 
-    generatePosters(l__Filtered__Films);
+    generatePosters(g__Filtered__Films);
 
-    // Iterate over each film
-    for (let l__Film__Index in l__Filtered__Films) {
-        $(("#addComment" + l__Film__Index)).click(function () {
-            handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
-        });
+    if (g__Logged__User != undefined) enableAddComments();
+    else disableAddComments();
 
-        // NEW
-        $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
-            // Clear settings form on modal close
-            document.getElementById(("commentForm" + l__Film__Index)).reset();
-        });
-
-    }
+    enablePostersButtons(g__Filtered__Films);
 
     document.getElementById("advancedSearchForm").reset();
 }

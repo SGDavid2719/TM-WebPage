@@ -589,86 +589,9 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent");
     l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film__Index));
 
-    for (let l__Comment__Index in p__Film.comment) {
-        let l__Card = document.createElement("div");
-        l__Card.setAttribute("class", "card border-dark mx-3 mx-lg-4 pb-3 mb-3");
-
-        // NEW
-        let l__Card__Header = document.createElement("div");
-        l__Card__Header.setAttribute("class", "card-header fw-bold row m-0");
-
-        // NEW
-        let l__Card__Header__Nickname = document.createElement("div");
-        l__Card__Header__Nickname.textContent = p__Film.comment[l__Comment__Index].author.name;
-        l__Card__Header__Nickname.setAttribute("class", "col-6 p-2");
-
-        // NEW
-        l__Card__Header.appendChild(l__Card__Header__Nickname);
-
-        // NEW
-        let l__Card__Buttons = document.createElement("div");
-        l__Card__Buttons.setAttribute("class", "col-6 d-flex justify-content-end");
-
-        // NEW
-        let l__Card__Edit__Button = document.createElement("button");
-        l__Card__Edit__Button.setAttribute("id", ("edit" + l__Comment__Index));
-        l__Card__Edit__Button.setAttribute("class", "btn border-0");
-
-        // NEW
-        let l__Card__Edit__Button__Icon = document.createElement("i");
-        l__Card__Edit__Button__Icon.setAttribute("class", "fa-solid fa-pencil");
-
-        // NEW
-        let l__Card__Delete__Button = document.createElement("button");
-        l__Card__Delete__Button.setAttribute("id", ("delete" + l__Comment__Index));
-        l__Card__Delete__Button.setAttribute("class", "btn border-0");
-
-        // NEW
-        let l__Card__Delete__Button__Icon = document.createElement("i");
-        l__Card__Delete__Button__Icon.setAttribute("class", "fa-solid fa-trash");
-
-        // NEW
-        l__Card__Edit__Button.appendChild(l__Card__Edit__Button__Icon);
-        l__Card__Delete__Button.appendChild(l__Card__Delete__Button__Icon);
-        l__Card__Buttons.appendChild(l__Card__Edit__Button);
-        l__Card__Buttons.appendChild(l__Card__Delete__Button);
-        l__Card__Header.appendChild(l__Card__Buttons);
-
-        let l__Card__Body = document.createElement("div");
-        l__Card__Body.setAttribute("class", "card-body text-dark");
-
-        let l__Card__Body__Title = document.createElement("h5");
-        l__Card__Body__Title.textContent = p__Film.comment[l__Comment__Index].contentRating.name + "/5";
-        l__Card__Body__Title.setAttribute("class", "card-title");
-
-        let l__Card__Body__Text = document.createElement("p");
-        l__Card__Body__Text.textContent = p__Film.comment[l__Comment__Index].name;
-        l__Card__Body__Text.setAttribute("class", "card-text");
-
-        l__Card__Body.appendChild(l__Card__Body__Title);
-        l__Card__Body.appendChild(l__Card__Body__Text);
-
-        l__Card.appendChild(l__Card__Header);
-        l__Card.appendChild(l__Card__Body);
-
-        l__Row__Opinion__Section__Comments__View.appendChild(l__Card);
-
-        // // NEW
-        // $(("#edit" + l__Comment__Index)).click(function (event) {
-        //     // On comment modal show, insert user name
-        //     document.getElementById(("inputRate" + l__Film__Index)).value = 5;
-        //     document.getElementById(("inputComment" + l__Film__Index)).value = "funciona el editar";
-        // });
-
-        // // NEW
-        // $(("#delete" + l__Comment__Index)).click(function (event) {
-        //     // On comment modal show, insert user name
-        //     NewAlert('warning', "¿Quieres borrar este comentario?", ' ', true, "Delete comment", true);
-        // });
-    }
+    appendComments(l__Row__Opinion__Section__Comments__View, p__Film.comment);
 
     l__Row__Opinion__Section__Comments.appendChild(l__Row__Opinion__Section__Comments__View);
-
 
     // Append form into comments section
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form);
@@ -718,5 +641,104 @@ function clearPosters() {
 
     while (l__PortfolioContainer.firstChild) {
         l__PortfolioContainer.removeChild(l__PortfolioContainer.lastChild);
+    }
+}
+
+function enablePostersButtons(p__Films) {
+
+    console.log("enablePostersButtons")
+
+    // Iterate over each film
+    for (let l__Film__Index in p__Films) {
+        $(("#addComment" + l__Film__Index)).click(function () {
+            handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
+        });
+
+        // NEW
+        $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
+            // Clear settings form on modal close
+            document.getElementById(("commentForm" + l__Film__Index)).reset();
+        });
+
+    }
+}
+
+function appendComments(l__Row__Opinion__Section__Comments__View, comments) {
+    
+    for (let l__Comment__Index in comments) {
+        let l__Card = document.createElement("div");
+        l__Card.setAttribute("class", "card border-dark mx-3 mx-lg-4 pb-3 mb-3");
+
+        // NEW
+        let l__Card__Header = document.createElement("div");
+        l__Card__Header.setAttribute("class", "card-header fw-bold row m-0");
+
+        // NEW
+        let l__Card__Header__Nickname = document.createElement("div");
+        l__Card__Header__Nickname.textContent = comments[l__Comment__Index].author.name;
+        l__Card__Header__Nickname.setAttribute("class", "col-6 p-2");
+        // NEW
+        l__Card__Header.appendChild(l__Card__Header__Nickname);
+
+        // NEW
+        let l__Card__Buttons = document.createElement("div");
+        l__Card__Buttons.setAttribute("class", "col-6 d-flex justify-content-end");
+
+        // NEW
+        let l__Card__Edit__Button = document.createElement("button");
+        l__Card__Edit__Button.setAttribute("id", ("edit" + l__Comment__Index));
+        l__Card__Edit__Button.setAttribute("class", "btn border-0");
+
+        // NEW
+        let l__Card__Edit__Button__Icon = document.createElement("i");
+        l__Card__Edit__Button__Icon.setAttribute("class", "fa-solid fa-pencil");
+
+        // NEW
+        let l__Card__Delete__Button = document.createElement("button");
+        l__Card__Delete__Button.setAttribute("id", ("delete" + l__Comment__Index));
+        l__Card__Delete__Button.setAttribute("class", "btn border-0");
+
+        // NEW
+        let l__Card__Delete__Button__Icon = document.createElement("i");
+        l__Card__Delete__Button__Icon.setAttribute("class", "fa-solid fa-trash");
+
+        // NEW
+        l__Card__Edit__Button.appendChild(l__Card__Edit__Button__Icon);
+        l__Card__Delete__Button.appendChild(l__Card__Delete__Button__Icon);
+        l__Card__Buttons.appendChild(l__Card__Edit__Button);
+        l__Card__Buttons.appendChild(l__Card__Delete__Button);
+        l__Card__Header.appendChild(l__Card__Buttons);
+
+        let l__Card__Body = document.createElement("div");
+        l__Card__Body.setAttribute("class", "card-body text-dark");
+
+        let l__Card__Body__Title = document.createElement("h5");
+        l__Card__Body__Title.textContent = comments[l__Comment__Index].contentRating.name + "/5";
+        l__Card__Body__Title.setAttribute("class", "card-title");
+
+        let l__Card__Body__Text = document.createElement("p");
+        l__Card__Body__Text.textContent = comments[l__Comment__Index].name;
+        l__Card__Body__Text.setAttribute("class", "card-text");
+
+        l__Card__Body.appendChild(l__Card__Body__Title);
+        l__Card__Body.appendChild(l__Card__Body__Text);
+
+        l__Card.appendChild(l__Card__Header);
+        l__Card.appendChild(l__Card__Body);
+
+        l__Row__Opinion__Section__Comments__View.appendChild(l__Card);
+
+        // // NEW
+        // $(("#edit" + l__Comment__Index)).click(function (event) {
+        //     // On comment modal show, insert user name
+        //     document.getElementById(("inputRate" + l__Film__Index)).value = 5;
+        //     document.getElementById(("inputComment" + l__Film__Index)).value = "funciona el editar";
+        // });
+
+        // // NEW
+        // $(("#delete" + l__Comment__Index)).click(function (event) {
+        //     // On comment modal show, insert user name
+        //     NewAlert('warning', "¿Quieres borrar este comentario?", ' ', true, "Delete comment", true);
+        // });
     }
 }

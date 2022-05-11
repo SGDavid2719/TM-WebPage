@@ -26,13 +26,7 @@ function handleSignIn() {
             $("#userLogOutBtn").removeClass("d-none");
             $("#userLogInBtn").addClass("d-none");
 
-            // Hide log in button and show comment form
-            for (let l__Film__Index in g__Films) {
-                $(("#loginModalBtn" + l__Film__Index)).addClass("d-none");
-                $(("#commentForm" + l__Film__Index)).removeClass("d-none");
-                $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
-                if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
-            }
+            enableAddComments();
 
             $("#userModal").modal("hide");
         }
@@ -75,13 +69,7 @@ function handleLogIn() {
             $("#userLogOutBtn").removeClass("d-none");
             $("#userLogInBtn").addClass("d-none");
 
-            // Hide log in button and show comment form
-            for (let l__Film__Index in g__Films) {
-                $(("#loginModalBtn" + l__Film__Index)).addClass("d-none");
-                $(("#commentForm" + l__Film__Index)).removeClass("d-none");
-                $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
-                if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
-            }
+            enableAddComments();
             
             $("#userModal").modal("hide")
         } else {
@@ -105,13 +93,7 @@ function handleLogOut() {
     $("#userLogOutBtn").addClass("d-none");
     $("#userLogInBtn").removeClass("d-none");
 
-    // Show login button and hide comments form
-    
-    for (let l__Film__Index in g__Films) {
-        $(("#loginModalBtn" + l__Film__Index)).removeClass("d-none");
-        $(("#commentForm" + l__Film__Index)).addClass("d-none");
-        $(("#commentFormBtn" + l__Film__Index)).addClass("d-none");
-    }
+    disableAddComments();    
 }
 
 // Insert current user values into settings form
@@ -135,15 +117,36 @@ function handleSettingsChange() {
         // If this user exists, then update
         if (l__Sign__In__User__Aux.length == 1) {
 
+            let previousUserName = g__Logged__User.name;
+
             l__Sign__In__User__Aux[0].email = l__Data[1].value;
-            l__Sign__In__User__Aux[0].description = l__Data[2].value
-            l__Sign__In__User__Aux[0].name = l__Data[0].value
+            l__Sign__In__User__Aux[0].description = l__Data[2].value;
+            l__Sign__In__User__Aux[0].name = l__Data[0].value;
 
             NewAlert('success', "Cambios guardados correctamente", ' ', false, "Close", false, 1000);
 
             document.getElementById("settingsForm").reset();
 
             $("#userSettingsModal").modal("hide");
+
+            // Hide log in button and show comment form
+            for (let l__Film__Index in g__Films) {
+                if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
+
+                let commentsArray = g__Films[l__Film__Index].comment.filter(comment => comment.author.name == previousUserName);
+
+                for (let commentIndex in commentsArray) {
+                    commentsArray[commentIndex].author.name = l__Data[0].value;
+                }
+
+                const lCommentSection = document.getElementById(("scrollviewContent" + l__Film__Index))
+
+                while (lCommentSection.firstChild) {
+                    lCommentSection.removeChild(lCommentSection.lastChild);
+                }
+
+                appendComments(lCommentSection, g__Films[l__Film__Index].comment)
+            }
         } else {
             NewAlert('error', "Ha ocurrido un error inesperado", ' ', false, "Close", false, 1000);
         }
@@ -193,5 +196,30 @@ function showPersonalDataError(p__Data) {
         NewAlert('error', "Introduzca una contraseña con 8 caracteres mínimo", ' ', false, "Close", false, 1000);
     } else {
         NewAlert('error', "Ha ocurrido un error inesperado", ' ', false, "Close", false, 1000);
+    }
+}
+
+function enableAddComments() {
+
+    let l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
+
+    // Hide log in button and show comment form
+    for (let l__Film__Index in l__Showing__Films) {
+        $(("#loginModalBtn" + l__Film__Index)).addClass("d-none");
+        $(("#commentForm" + l__Film__Index)).removeClass("d-none");
+        $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
+        if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
+    }
+}
+
+function disableAddComments() {
+    // Show login button and hide comments form
+
+    let l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
+        
+    for (let l__Film__Index in l__Showing__Films) {
+        $(("#loginModalBtn" + l__Film__Index)).removeClass("d-none");
+        $(("#commentForm" + l__Film__Index)).addClass("d-none");
+        $(("#commentFormBtn" + l__Film__Index)).addClass("d-none");
     }
 }
