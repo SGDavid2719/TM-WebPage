@@ -71,7 +71,8 @@ function handleLogIn() {
 
             enableAddComments();
             
-            $("#userModal").modal("hide")
+            $("#userModal").modal("hide");
+            
         } else {
             // Show error
             NewAlert('error', "Ya existe una cuenta con este correo", ' ', false, "Close", false, 1000);
@@ -93,7 +94,7 @@ function handleLogOut() {
     $("#userLogOutBtn").addClass("d-none");
     $("#userLogInBtn").removeClass("d-none");
 
-    disableAddComments();    
+    disableAddComments();
 }
 
 // Insert current user values into settings form
@@ -145,7 +146,7 @@ function handleSettingsChange() {
                     lCommentSection.removeChild(lCommentSection.lastChild);
                 }
 
-                appendComments(lCommentSection, g__Films[l__Film__Index].comment)
+                appendComments(lCommentSection, g__Films[l__Film__Index].comment, l__Film__Index);
             }
         } else {
             NewAlert('error', "Ha ocurrido un error inesperado", ' ', false, "Close", false, 1000);
@@ -209,6 +210,12 @@ function enableAddComments() {
         $(("#commentForm" + l__Film__Index)).removeClass("d-none");
         $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
         if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
+
+        const lCommentSection = document.getElementById(("scrollviewContent" + l__Film__Index))
+        while (lCommentSection.firstChild) {
+            lCommentSection.removeChild(lCommentSection.lastChild);
+        }
+        appendComments(lCommentSection, l__Showing__Films[l__Film__Index].comment, l__Film__Index);
     }
 }
 
@@ -221,5 +228,11 @@ function disableAddComments() {
         $(("#loginModalBtn" + l__Film__Index)).removeClass("d-none");
         $(("#commentForm" + l__Film__Index)).addClass("d-none");
         $(("#commentFormBtn" + l__Film__Index)).addClass("d-none");
+
+        const lCommentSection = document.getElementById(("scrollviewContent" + l__Film__Index))
+        while (lCommentSection.firstChild) {
+            lCommentSection.removeChild(lCommentSection.lastChild);
+        }
+        appendComments(lCommentSection, l__Showing__Films[l__Film__Index].comment, l__Film__Index);
     }
 }

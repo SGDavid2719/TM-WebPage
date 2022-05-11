@@ -3,8 +3,6 @@ var g__Films = [], g__Users = [], g__Logged__User = undefined;
 
 $(document).ready(function () {
 
-    fetchWikipediaInfo("Real%20Madrid");
-
     //$('#loaderModal').modal('toggle');
 
     fetch('./json/peliculas.json')

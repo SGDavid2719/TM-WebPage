@@ -26,8 +26,17 @@
         allowEscapeKey: false,
     }).then((result) => {
         if (result.isConfirmed) {
-            // NEW
-            console.log("Comentario borrado")
+            handleDeleteComment(deleteCommentFilmIndex, deleteCommentIndex);
+            const lCommentSection = document.getElementById(("scrollviewContent" + deleteCommentFilmIndex))
+
+            while (lCommentSection.firstChild) {
+                lCommentSection.removeChild(lCommentSection.lastChild);
+            }
+
+            appendComments(lCommentSection, g__Films[deleteCommentFilmIndex].comment, deleteCommentFilmIndex);
+        } else {
+            deleteCommentFilmIndex = undefined;
+            deleteCommentIndex = undefined;
         }
     });
 }
