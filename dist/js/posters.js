@@ -12,10 +12,15 @@ async function generatePosters(p__Films) {
 
         generateFilmPoster(l__FilmsContainer, p__Films[l__Index], l__Index);
 
-        //await generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
+        await generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
+
+        createTwitterWidgets(l__Index, g__Tweets.filter(tweet => tweet.headline == p__Films[l__Index].identifier));
 
         //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
+
+    // Important
+    twttr.widgets.load();
 
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
@@ -23,7 +28,7 @@ async function generatePosters(p__Films) {
     });
 
     // Hide loading panel
-    $("#loaderModal").modal("hide");
+    //$("#loaderModal").modal("hide");
 }
 
 /*
@@ -588,11 +593,12 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     let l__Row__Opinion__Section__Comments = document.createElement("div");
     // Format form
     l__Row__Opinion__Section__Comments.setAttribute("class", "row pt-4 p-1");
+    l__Row__Opinion__Section__Comments.setAttribute("id", ("commentSection" + p__Film__Index));
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Comments__View = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent");
+    l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent col-12 col-md-7");
     l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film__Index));
 
     appendComments(l__Row__Opinion__Section__Comments__View, p__Film.comment, p__Film__Index);
@@ -797,4 +803,14 @@ async function createPopover(searchTerm) {
     popover.textContent = searchTerm + ", ";
 
     return popover;
+}
+
+function createTwitterWidgets(filmIndex, tweet) {
+    let commentSection = document.getElementById(("commentSection"+filmIndex));
+
+    let tweetContent = "<p>No tweet avaliable</p>";
+
+    if (tweet.length > 0) tweetContent = tweet[0].sharedContent.text;
+
+    commentSection.innerHTML += '<div class="col-12 col-md-5 p-3">' + tweetContent + '</div>';
 }

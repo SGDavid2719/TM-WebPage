@@ -67,6 +67,7 @@
       "name": "USA"
     },
     "name": "Titanic",
+    "identifier": 0,
     "trailer": {
       "@type": "VideoObject",
       "name": "https://www.youtube.com/watch?v=kVrqfYjkTdQ"
@@ -178,7 +179,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/Los_ultimos_de_filipinas.jpg"
       }
-    ]
+    ],
+    "identifier": 1
   },
   {
     "@context": "https://schema.org",
@@ -262,7 +264,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/avengers_endgame.jpg"
       }
-    ]
+    ],
+    "identifier": 2
   },
   {
     "@context": "https://schema.org",
@@ -346,7 +349,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/padrino.jpg"
       }
-    ]
+    ],
+    "identifier": 3
   },
   {
     "@context": "https://schema.org",
@@ -430,7 +434,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/joker.jpg"
       }
-    ]
+    ],
+    "identifier": 4
   },
   {
     "@context": "https://schema.org",
@@ -514,7 +519,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/lo_dejo_cuando_quiera.jpg"
       }
-    ]
+    ],
+    "identifier": 5
   },
   {
     "@context": "https://schema.org",
@@ -598,7 +604,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/Los_lunes_al_sol.jpg"
       }
-    ]
+    ],
+    "identifier": 6
   },
   {
     "@context": "https://schema.org",
@@ -682,7 +689,8 @@
         "@type": "ImageObject",
         "name": "./assets/img/portfolio/mientras_dure_la_guerra.jpg"
       }
-    ]
+    ],
+    "identifier": 7
   },
   {
     "@context": "https://schema.org",
@@ -767,5 +775,7 @@
         "name": "./assets/img/portfolio/100_perdon.jpg"
       }
     ]
+    ,
+    "identifier": 8
   }
 ]

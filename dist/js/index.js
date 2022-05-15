@@ -1,11 +1,21 @@
 // Globals
-var g__Films = [], g__Users = [], g__Logged__User = undefined;
+var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined;
 
 $(document).ready(function () {
 
     fetchWikipediaInfo("James Cameron");
 
-    $('#loaderModal').modal('toggle');
+    //$('#loaderModal').modal('toggle');
+
+    fetch('./json/tweets.json')
+        .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
+        .then((result) => result.json())
+        .then((result) => {
+            g__Tweets = result;
+
+            // DELETE
+            console.log(g__Tweets);
+        }); 
 
     fetch('./json/peliculas.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
