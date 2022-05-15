@@ -56,8 +56,12 @@ function handleLogIn() {
                 "description": l__Data[2].value,
                 "name": l__Data[0].value
             });
-            NewAlert('info', ("Bienvenido " + l__Data[0].value), ' ', false, "Close", false, 1000);
 
+            // Update usuarios.json
+            saveUserChanges(g__Users);
+
+            NewAlert('info', ("Bienvenido " + l__Data[0].value), ' ', false, "Close", false, 1000);
+ 
             g__Logged__User = g__Users[g__Users.length - 1];
 
             // Reset sing in and log in forms

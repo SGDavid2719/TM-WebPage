@@ -8,7 +8,7 @@ function handleSubmit (p__Form__Container) {
 
         let l__Film__Index = p__Form__Container.split("commentForm")[1];
 
-        let l__Comment = { "@type": "text", "author": { "@type:": "Person", "name": l__Data[0].value}, "contentRating": {"@type": "Rating", "name": l__Data[1].value }, "name": l__Data[2].value }; 
+        let l__Comment = { "@type": "Comment", "author": { "@type:": "Person", "name": l__Data[0].value}, "contentRating": {"@type": "Rating", "name": l__Data[1].value }, "name": l__Data[2].value }; 
 
         lFilteredFilms[l__Film__Index].comment.push(l__Comment);
 

@@ -30,16 +30,12 @@ function getGenres() {
 }
 
 function getCountries() {
-    let l__Countries__By__Film = [...new Set(g__Films.map(l__Films => l__Films.countryOfOrigin))];
-    let l__Countries = [];
-    for (l__Countries__By__Film__Index in l__Countries__By__Film) {
-        l__Countries.push(l__Countries__By__Film[l__Countries__By__Film__Index].name);
-    }
-    l__Distinct__Countries__Array = [...new Set(l__Countries)].sort((p__First__Country, p__Second__Country) => {
-        let l__First__Country = p__First__Country.toLowerCase();
-        let l__Second__Country = p__Second__Country.toLowerCase();
-        if (l__First__Country < l__Second__Country) return -1;
-        if (l__First__Country > l__Second__Country) return 1;
+    let countries = [...new Set(g__Films.map(l__Films => l__Films.countryOfOrigin.name))];
+    l__Distinct__Countries__Array = countries.sort((_firstCountry, _secondCountry) => {
+        let firstCountry = _firstCountry.toLowerCase();
+        let secondCountry = _secondCountry.toLowerCase();
+        if (firstCountry < secondCountry) return -1;
+        if (firstCountry > secondCountry) return 1;
         return 0;
     });
 }

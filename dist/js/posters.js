@@ -1,6 +1,6 @@
 var deleteCommentFilmIndex = undefined, deleteCommentIndex = undefined;
 
-function generatePosters(p__Films) {
+async function generatePosters(p__Films) {
     // Get films container
     let l__FilmsContainer = document.getElementById("filmsContainer");
 
@@ -12,10 +12,18 @@ function generatePosters(p__Films) {
 
         generateFilmPoster(l__FilmsContainer, p__Films[l__Index], l__Index);
 
-        generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
+        //await generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
 
-        fetchYoutubeVideo(p__Films[l__Index].trailer.name, ("youtubeVideo" + l__Index));
+        //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
+
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    });
+
+    // Hide loading panel
+    $("#loaderModal").modal("hide");
 }
 
 /*
@@ -105,7 +113,7 @@ function generateFilmPoster(p__FilmsContainer, p__Film, p__Film__Index) {
  *  @param p__Film__Index
  *  
 */
-function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
+async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Create portfolio div container
     let l__Portfolio__Div = document.createElement("div");
     // Format div
@@ -259,12 +267,12 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Append text node into strong
     l__Row__Second__Col__Div__List__Item__Director__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node);
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Director__Text__Node = document.createTextNode(p__Film.director.name);
+    // Create row second col div list item
+    let l__Row__Second__Col__Div__List__A__Item__Director = await createPopover(p__Film.director.name);
 
     // Append text node into item
     l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__Item__Director__Strong);
-    l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__Item__Director__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__A__Item__Director);
 
     // Append item into list
     l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Director);
@@ -284,7 +292,7 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     l__Row__Second__Col__Div__List__Item__Music__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node);
 
     // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = document.createTextNode(p__Film.musicBy.name);
+    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = await createPopover(p__Film.musicBy.name);
 
     // Append text node into item
     l__Row__Second__Col__Div__List__Item__Music.appendChild(l__Row__Second__Col__Div__List__Item__Music__Strong);
@@ -307,18 +315,14 @@ function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
     // Append text node into strong
     l__Row__Second__Col__Div__List__Item__Actor__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node);
 
-    // For each actor
-    let l__Actors = "";
-    for (l__Item in p__Film.actor) {
-        l__Actors += p__Film.actor[l__Item].name + ", ";
-    }
-
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = document.createTextNode(l__Actors);
-
     // Append text node into item
     l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Strong);
-    l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Text__Node);
+
+    // For each actor
+    for (l__Item in p__Film.actor) {
+        let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = await createPopover(p__Film.actor[l__Item].name);
+        l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Text__Node);
+    }    
 
     // Append item into list
     l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Actor);
@@ -758,8 +762,6 @@ function handleEditComment(comments, commentIndex, filmIndex) {
 
     let lFilteredFilms = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
 
-    console.log(filmIndex)
-
     var cloneArray = comments.slice();
 
     cloneArray.splice(commentIndex,1);
@@ -775,4 +777,24 @@ function handleDeleteComment(pDeleteCommentFilmIndex, pDeleteCommentIndex) {
     cloneArray.splice(pDeleteCommentIndex,1);
 
     lFilteredFilms[pDeleteCommentFilmIndex].comment = [...cloneArray];
+
+
+}
+
+async function createPopover(searchTerm) {
+
+    let searchTermData = await fetchWikipediaInfo(searchTerm);
+
+    let popover = document.createElement("a");
+    popover.setAttribute("tabindex", "0");
+    popover.setAttribute("class", "");
+    popover.setAttribute("role", "button");
+    popover.setAttribute("data-bs-toggle", "popover");
+    popover.setAttribute("data-bs-trigger", "focus");
+    popover.setAttribute("data-bs-placement", "right");
+    popover.setAttribute("title", searchTerm);
+    popover.setAttribute("data-bs-content", searchTermData);
+    popover.textContent = searchTerm + ", ";
+
+    return popover;
 }

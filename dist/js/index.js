@@ -3,6 +3,8 @@ var g__Films = [], g__Users = [], g__Logged__User = undefined;
 
 $(document).ready(function () {
 
+    fetchWikipediaInfo("James Cameron");
+
     $('#loaderModal').modal('toggle');
 
     fetch('./json/peliculas.json')
@@ -17,7 +19,8 @@ $(document).ready(function () {
             generatePosters(g__Films);
             fillFilters();
             enablePostersButtons(g__Films);
-        });
+        });   
+        
     fetch('./json/usuarios.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
         .then((result) => result.json())
@@ -87,7 +90,7 @@ $(document).ready(function () {
         if (g__Logged__User != undefined) document.getElementById("inputNickname").value = g__Logged__User.name;
     });
 
-    setTimeout(() => { $("#loaderModal").modal("hide") }, 1500);
+    //setTimeout(() => { $("#loaderModal").modal("hide") }, 4500);
 
     ScrollReveal().reveal('.masthead');
     ScrollReveal().reveal('#films', { delay: 1000 });

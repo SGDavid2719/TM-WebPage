@@ -73,7 +73,7 @@
     },
     "comment": [ 
       {
-        "@type": "text",
+        "@type": "Comment",
         "author": {
           "@type": "Person",
           "name": "David"

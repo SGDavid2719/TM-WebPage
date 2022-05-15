@@ -1,16 +1,22 @@
-function fetchWikipediaInfo(p__Search__Term, p__Container) {
+async function fetchWikipediaInfo(p__Search__Term) {
     //url from YouTube docs modified for my random term and API key,
-    const WIKIPEDIA_URL = `https://en.wikipedia.org/w/api.php?action=openseach&format=json&search=${p__Search__Term}`;
+    const WIKIPEDIA_URL = `https://en.wikipedia.org/w/api.php?format=json&action=query&origin=*&prop=extracts&exintro&explaintext&redirects=1&titles=${p__Search__Term}`;
 
-    fetch(WIKIPEDIA_URL)
-        .then(response => response.json())
-        .then(data => {
-            //console.log(data.items[0].id.videoId);
-            //console.log above is to help access proper data in the JSON
-            //object
-            //set iframe source to proper URL (notice same dynamic strings 
-            //used above)
+    try {
+        let data = await fetch(WIKIPEDIA_URL).then(response => response.json());
 
-            console.log(data)
-        });
+        if (data.query.pages != undefined) {
+            data = data.query.pages;
+            let pageID = Object.keys(data)[0];
+
+            return data[pageID].extract;
+        } else {
+            return " ";
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+
+    return " ";
 }

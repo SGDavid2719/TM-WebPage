@@ -4,14 +4,12 @@
  *  @example
  *  NewAlert();
  *  @param {string} p_Icon - icon to show
- *  @param {string} p_Title - icon to show
- *  @param {string} p_HTML - icon to show
- *  @param {string} p_ShowConfirmButton - icon to show
- *  @param {string} p_Confirm_Text - icon to show
- *  @param {boolean} p_ShowConfirmButton - icon to show
- *  @param {string} p_Confirm_Text - icon to show
- *  @param {boolean} p_ShowCloseButton - icon to show
- *  @param {number} [p_Timer] - icon to show
+ *  @param {string} p_Title - title to show
+ *  @param {string} p_HTML - html to show
+ *  @param {string} p_ShowConfirmButton - true shows confirm button
+ *  @param {string} p_Confirm_Text - confirm text
+ *  @param {boolean} p_ShowConfirmButton - true close confirm button
+ *  @param {number} [p_Timer] - time out
  */
  function NewAlert(p_Icon, p_Title, p_HTML, p_ShowConfirmButton, p_Confirm_Text, p_ShowCloseButton, p_Timer) {
     Swal.fire({
