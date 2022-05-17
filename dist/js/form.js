@@ -1,5 +1,7 @@
 function handleSubmit (p__Form__Container) {
 
+    console.log("??")
+
     let lFilteredFilms = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
 
     let l__Data = $(("#" + p__Form__Container)).serializeArray();

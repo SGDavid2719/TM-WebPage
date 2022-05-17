@@ -2,9 +2,6 @@
 var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined;
 
 $(document).ready(function () {
-
-    fetchWikipediaInfo("James Cameron");
-
     //$('#loaderModal').modal('toggle');
 
     fetch('./json/tweets.json')
@@ -20,13 +17,13 @@ $(document).ready(function () {
     fetch('./json/peliculas.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
         .then((result) => result.json())
-        .then((result) => {
+        .then(async (result) => {
             g__Films = result;
 
             // DELETE
             console.log(g__Films);
 
-            generatePosters(g__Films);
+            await generatePosters(g__Films);
             fillFilters();
             enablePostersButtons(g__Films);
         });   

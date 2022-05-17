@@ -660,6 +660,9 @@ function enablePostersButtons(p__Films) {
 
     // Iterate over each film
     for (let l__Film__Index in p__Films) {
+
+        console.log("???")
+
         $(("#addComment" + l__Film__Index)).click(function () {
             handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
         });
