@@ -1,4 +1,4 @@
-var deleteCommentFilmIndex = undefined, deleteCommentIndex = undefined;
+var deleteCommentFilmIdentifier = undefined, deleteCommentIndex = undefined;
 
 async function generatePosters(p__Films) {
     // Get films container
@@ -10,11 +10,11 @@ async function generatePosters(p__Films) {
     // Iterate over each film
     for (l__Index in p__Films) {
 
-        generateFilmPoster(l__FilmsContainer, p__Films[l__Index], l__Index);
+        generateFilmPoster(l__FilmsContainer, p__Films[l__Index]);
 
-        await generateFilmModal(l__PortfolioContainer, p__Films[l__Index], l__Index);
+        await generateFilmModal(l__PortfolioContainer, p__Films[l__Index]);
 
-        createTwitterWidgets(l__Index, g__Tweets.filter(tweet => tweet.headline == p__Films[l__Index].identifier));
+        createTwitterWidgets(p__Films[l__Index].identifier, g__Tweets.filter(tweet => tweet.headline == p__Films[l__Index].identifier));
 
         //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
@@ -38,14 +38,14 @@ async function generatePosters(p__Films) {
  * 
  *  @param p__FilmsContainer -
  *  @param p__Film -
- *  @param p__Film__Index
+ *  @param p__Film.identifier
  *  
 */
-function generateFilmPoster(p__FilmsContainer, p__Film, p__Film__Index) {
+function generateFilmPoster(p__FilmsContainer, p__Film) {
     // Create film div container
     let l__Film__Div = document.createElement("div");
     // Format div
-    l__Film__Div.setAttribute("id", ("film"+p__Film__Index));
+    l__Film__Div.setAttribute("id", ("film"+p__Film.identifier));
     l__Film__Div.setAttribute("class", "col-lg-4 col-sm-6 mb-4");
 
     // Create item (div)
@@ -57,7 +57,7 @@ function generateFilmPoster(p__FilmsContainer, p__Film, p__Film__Index) {
     // Format a
     l__Portfolio__Link__A.setAttribute("class", "portfolio-link");
     l__Portfolio__Link__A.setAttribute("data-bs-toggle", "modal");
-    l__Portfolio__Link__A.setAttribute("href", ("#portfolioModal" + p__Film__Index));
+    l__Portfolio__Link__A.setAttribute("href", ("#portfolioModal" + p__Film.identifier));
 
     let l__Portfolio__Img = document.createElement("img");
     // Format img
@@ -115,15 +115,15 @@ function generateFilmPoster(p__FilmsContainer, p__Film, p__Film__Index) {
  * 
  *  @param p__PortfolioContainer -
  *  @param p__Film -
- *  @param p__Film__Index
+ *  @param p__Film.identifier
  *  
 */
-async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index) {
+async function generateFilmModal(p__PortfolioContainer, p__Film) {
     // Create portfolio div container
     let l__Portfolio__Div = document.createElement("div");
     // Format div
     l__Portfolio__Div.setAttribute("class", "portfolio-modal modal fade");
-    l__Portfolio__Div.setAttribute("id", ("portfolioModal" + p__Film__Index));
+    l__Portfolio__Div.setAttribute("id", ("portfolioModal" + p__Film.identifier));
     l__Portfolio__Div.setAttribute("tabindex", "-1");
     l__Portfolio__Div.setAttribute("role", "dialog");
     l__Portfolio__Div.setAttribute("aria-hidden", "true");
@@ -141,7 +141,7 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     // Create close modal div 
     let l__Close__Modal__Div = document.createElement("div");
     // Format div
-    l__Close__Modal__Div.setAttribute("id", ("filmCloseModalBtn" + p__Film__Index));
+    l__Close__Modal__Div.setAttribute("id", ("filmCloseModalBtn" + p__Film.identifier));
     l__Close__Modal__Div.setAttribute("class", "close-modal");
     l__Close__Modal__Div.setAttribute("data-bs-dismiss", "modal");
 
@@ -194,7 +194,7 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     // Create row col modal body div 
     let l__Row__Col__IFrame = document.createElement("iframe");
     // Format a
-    l__Row__Col__IFrame.setAttribute("id", ("youtubeVideo" + p__Film__Index));
+    l__Row__Col__IFrame.setAttribute("id", ("youtubeVideo" + p__Film.identifier));
     l__Row__Col__IFrame.setAttribute("class", "modalIframe");
 
     // Append modal body (div) into row col (div)
@@ -418,13 +418,13 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     // Create opinion section div
     let l__Row__Opinion__Section = document.createElement("div");
     // Format div
-    l__Row__Opinion__Section.setAttribute("id", ("opinionSection" + p__Film__Index));
+    l__Row__Opinion__Section.setAttribute("id", ("opinionSection" + p__Film.identifier));
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Form = document.createElement("form");
     // Format form
     l__Row__Opinion__Section__Form.setAttribute("class", "text-lg-start row d-none");
-    l__Row__Opinion__Section__Form.setAttribute("id", ("commentForm" + p__Film__Index));
+    l__Row__Opinion__Section__Form.setAttribute("id", ("commentForm" + p__Film.identifier));
 
     // NICKNAME INPUT
 
@@ -437,7 +437,7 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     let l__Row__Opinion__Section__Form__Name__Col__Label = document.createElement("label");
     // Format form
     l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("class", "text-lg-start form-label");
-    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("for", ("inputNickname" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("for", ("inputNickname" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Name__Col__Label.textContent = "Añade tu nombre";
 
     // Create opinion section div form name column input
@@ -446,8 +446,8 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("type", "text");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("maxlength", "40");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("id", ("inputNickname" + p__Film__Index));
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("name", ("inputNickname" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("id", ("inputNickname" + p__Film.identifier));
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("name", ("inputNickname" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("aria-describedby", "nameInputHelp");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("placeholder", "p.e. David");
     l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("required", true);
@@ -469,15 +469,15 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     let l__Row__Opinion__Section__Form__Rate__Col__Label = document.createElement("label");
     // Format form
     l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("class", "text-lg-start form-label");
-    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("for", ("inputRate" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("for", ("inputRate" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Rate__Col__Label.textContent = "Puntuación";
 
     // Create opinion section div form rate column select
     let l__Row__Opinion__Section__Form__Rate__Col__Select = document.createElement("select");
     // Format form
     l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("class", "form-select");
-    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("id", ("inputRate" + p__Film__Index));
-    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("name", ("inputRate" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("id", ("inputRate" + p__Film.identifier));
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("name", ("inputRate" + p__Film.identifier));
 
     // Create opinion section div form rate column select option
     let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1 = document.createElement("option");
@@ -531,15 +531,15 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     let l__Row__Opinion__Section__Form__Opinion__Col__Label = document.createElement("label");
     // Format form
     l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("class", "text-lg-start form-label");
-    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("for", ("inputComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("for", ("inputComment" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Opinion__Col__Label.textContent = "Añade un comentario";
 
     // Create opinion section div form name column input
     let l__Row__Opinion__Section__Form__Opinion__Col__Input = document.createElement("textarea");
     // Format form
     l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("id", ("inputComment" + p__Film__Index));
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("name", ("inputComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("id", ("inputComment" + p__Film.identifier));
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("name", ("inputComment" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("aria-describedby", "opinionTextareaHelp");
     l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("placeholder", "p.e. Esta película...");
     l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("required", true);
@@ -554,7 +554,7 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     // Create opinion section div form
     let l__Row__Opinion__Section__Form__Button = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Button.setAttribute("id", ("commentFormBtn" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Button.setAttribute("id", ("commentFormBtn" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Button.setAttribute("class", "row d-none");
 
     // Create opinion section div form
@@ -566,7 +566,7 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     let l__Row__Opinion__Section__Form__Button__Col__Btn = document.createElement("button");
     // Format form
     l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("class", "btn btn-primary");
-    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("id", ("addComment" + p__Film__Index));
+    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("id", ("addComment" + p__Film.identifier));
     l__Row__Opinion__Section__Form__Button__Col__Btn.textContent = "Añade tu comentario";
 
     l__Row__Opinion__Section__Form__Button__Col.appendChild(l__Row__Opinion__Section__Form__Button__Col__Btn);
@@ -575,7 +575,7 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     // LOGIN
 
     let l__Login__Section = document.createElement("div");
-    l__Login__Section.setAttribute("id", ("loginModalBtn" + p__Film__Index));
+    l__Login__Section.setAttribute("id", ("loginModalBtn" + p__Film.identifier));
     l__Login__Section.setAttribute("class", "row py-4 px-5 border rounded d-flex justify-content-center");
     let l__Login__Section__Button = document.createElement("button");
     l__Login__Section__Button.setAttribute("type", "button");
@@ -593,15 +593,15 @@ async function generateFilmModal(p__PortfolioContainer, p__Film, p__Film__Index)
     let l__Row__Opinion__Section__Comments = document.createElement("div");
     // Format form
     l__Row__Opinion__Section__Comments.setAttribute("class", "row pt-4 p-1");
-    l__Row__Opinion__Section__Comments.setAttribute("id", ("commentSection" + p__Film__Index));
+    l__Row__Opinion__Section__Comments.setAttribute("id", ("commentSection" + p__Film.identifier));
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Comments__View = document.createElement("div");
     // Format form
     l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent col-12 col-md-7");
-    l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film__Index));
+    l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film.identifier));
 
-    appendComments(l__Row__Opinion__Section__Comments__View, p__Film.comment, p__Film__Index);
+    appendComments(l__Row__Opinion__Section__Comments__View, p__Film.comment, p__Film.identifier);
 
     l__Row__Opinion__Section__Comments.appendChild(l__Row__Opinion__Section__Comments__View);
 
@@ -661,23 +661,21 @@ function enablePostersButtons(p__Films) {
     // Iterate over each film
     for (let l__Film__Index in p__Films) {
 
-        console.log("???")
-
-        $(("#addComment" + l__Film__Index)).click(function () {
-            handleSubmit(("commentForm" + l__Film__Index), ("scrollviewContent" + l__Film__Index));
+        $(("#addComment" + p__Films[l__Film__Index].identifier)).click(function () {
+            handleSubmit(("commentForm" + p__Films[l__Film__Index].identifier), ("scrollviewContent" + p__Films[l__Film__Index].identifier));
         });
 
         // NEW
-        $(("#filmCloseModalBtn"+ l__Film__Index)).click(function (event) {
+        $(("#filmCloseModalBtn"+ p__Films[l__Film__Index].identifier)).click(function (event) {
             // Clear settings form on modal close
-            document.getElementById(("commentForm" + l__Film__Index)).reset();
-            if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
+            document.getElementById(("commentForm" + p__Films[l__Film__Index].identifier)).reset();
+            if (g__Logged__User != undefined) document.getElementById(("inputNickname" + p__Films[l__Film__Index].identifier)).value = g__Logged__User.name;
         });
 
     }
 }
 
-function appendComments(l__Row__Opinion__Section__Comments__View, comments, filmIndex) {
+function appendComments(l__Row__Opinion__Section__Comments__View, comments, identifier) {
     
     for (let l__Comment__Index in comments) {
         let l__Card = document.createElement("div");
@@ -701,7 +699,7 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, film
 
             // NEW
             let l__Card__Edit__Button = document.createElement("button");
-            l__Card__Edit__Button.setAttribute("id", ("film" + filmIndex + "edit" + l__Comment__Index));
+            l__Card__Edit__Button.setAttribute("id", ("film" + identifier + "edit" + l__Comment__Index));
             l__Card__Edit__Button.setAttribute("class", "btn border-0");
 
             // NEW
@@ -710,7 +708,7 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, film
 
             // NEW
             let l__Card__Delete__Button = document.createElement("button");
-            l__Card__Delete__Button.setAttribute("id", ("film" + filmIndex + "delete" + l__Comment__Index));
+            l__Card__Delete__Button.setAttribute("id", ("film" + identifier + "delete" + l__Comment__Index));
             l__Card__Delete__Button.setAttribute("class", "btn border-0");
 
             // NEW
@@ -745,21 +743,21 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, film
         l__Row__Opinion__Section__Comments__View.appendChild(l__Card);
 
         // NEW
-        $(("#film" + filmIndex + "edit" + l__Comment__Index)).click(function (event) {
-            console.log("filmIndex: " + filmIndex);
+        $(("#film" + identifier + "edit" + l__Comment__Index)).click(function (event) {
+            console.log("p__Film.identifier: " + identifier);
             console.log("l__Comment__Index: " + l__Comment__Index)
             // On comment modal show, insert user name
 
-            document.getElementById(("inputRate" + filmIndex)).value = g__Films[filmIndex].comment[l__Comment__Index].contentRating.name;
-            document.getElementById(("inputComment" + filmIndex)).value = g__Films[filmIndex].comment[l__Comment__Index].name;
+            document.getElementById(("inputRate" + identifier)).value = g__Films.filter(film => film.identifier == identifier)[0].comment[l__Comment__Index].contentRating.name;
+            document.getElementById(("inputComment" + identifier)).value = g__Films.filter(film => film.identifier == identifier)[0].comment[l__Comment__Index].name;
 
-            handleEditComment(g__Films[filmIndex].comment, l__Comment__Index, filmIndex);
+            handleEditComment(g__Films.filter(film => film.identifier == identifier)[0].comment, l__Comment__Index, identifier);
         });
 
         // NEW
-        $(("#film" + filmIndex + "delete" + l__Comment__Index)).click(function (event) {
+        $(("#film" + identifier + "delete" + l__Comment__Index)).click(function (event) {
 
-            deleteCommentFilmIndex = filmIndex;
+            deleteCommentFilmIdentifier = identifier;
             deleteCommentIndex = l__Comment__Index;
             // On comment modal show, insert user name
             NewAlert('warning', "¿Quieres borrar este comentario?", ' ', true, "Delete comment", true);
@@ -767,7 +765,7 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, film
     }
 }
 
-function handleEditComment(comments, commentIndex, filmIndex) {
+function handleEditComment(comments, commentIndex, identifier) {
 
     let lFilteredFilms = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
 
@@ -775,24 +773,21 @@ function handleEditComment(comments, commentIndex, filmIndex) {
 
     cloneArray.splice(commentIndex,1);
 
-    lFilteredFilms[filmIndex].comment = [...cloneArray];
+    lFilteredFilms.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
 }
 
-function handleDeleteComment(pDeleteCommentFilmIndex, pDeleteCommentIndex) {
-    let lFilteredFilms = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
+function handleDeleteComment(identifier, pDeleteCommentIndex) {
 
-    var cloneArray = lFilteredFilms[pDeleteCommentFilmIndex].comment.slice();
+    var cloneArray = g__Films.filter(film => film.identifier == identifier)[0].comment.slice();
 
     cloneArray.splice(pDeleteCommentIndex,1);
 
-    lFilteredFilms[pDeleteCommentFilmIndex].comment = [...cloneArray];
-
-
+    g__Films.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
 }
 
 async function createPopover(searchTerm) {
 
-    let searchTermData = await fetchWikipediaInfo(searchTerm);
+    let searchTermData = undefined //await fetchWikipediaInfo(searchTerm);
 
     let popover = document.createElement("a");
     popover.setAttribute("tabindex", "0");
@@ -808,8 +803,8 @@ async function createPopover(searchTerm) {
     return popover;
 }
 
-function createTwitterWidgets(filmIndex, tweet) {
-    let commentSection = document.getElementById(("commentSection"+filmIndex));
+function createTwitterWidgets(identifier, tweet) {
+    let commentSection = document.getElementById(("commentSection"+identifier));
 
     let tweetContent = "<p>No tweet avaliable</p>";
 

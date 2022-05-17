@@ -90,7 +90,7 @@ function fillYearDropdown() {
     }
 }
 
-function handleBasicSearch() {
+async function handleBasicSearch() {
     let l__Form__Data = $("#basicSearchForm").serializeArray();
 
     console.log(l__Form__Data)
@@ -101,7 +101,7 @@ function handleBasicSearch() {
 
     if (g__Filtered__Films.length == 0) g__Filtered__Films = [...g__Films];
 
-    generatePosters(g__Filtered__Films);
+    await generatePosters(g__Filtered__Films);
 
     if (g__Logged__User != undefined) enableAddComments(g__Filtered__Films);
     else disableAddComments();
@@ -109,7 +109,7 @@ function handleBasicSearch() {
     enablePostersButtons(g__Filtered__Films);
 }
 
-function handleAdvancedSearch() {
+async function handleAdvancedSearch() {
     let l__Form__Data = $("#advancedSearchForm").serializeArray();
     
     const [filmName, filmGenre, filmReleasedYear, filmCountry] = l__Form__Data;
@@ -166,7 +166,7 @@ function handleAdvancedSearch() {
 
     if (g__Filtered__Films.length == 0) g__Filtered__Films = [...g__Films];
 
-    generatePosters(g__Filtered__Films);
+    await generatePosters(g__Filtered__Films);
 
     if (g__Logged__User != undefined) enableAddComments();
     else disableAddComments();

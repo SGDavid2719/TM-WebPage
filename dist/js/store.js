@@ -3,11 +3,13 @@ function saveCommentChanges(films) {
 }
 
 function saveUserChanges(users) {
+
+
     
     
-    postData('./json/usuarios.json', users)
+    postData('../php/index.php', users)
         .then(data => {
-        console.log(data); // JSON data parsed by `data.json()` call
+            console.log(data); // JSON data parsed by `data.json()` call
         });
   
 }

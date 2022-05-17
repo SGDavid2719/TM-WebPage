@@ -136,7 +136,7 @@ function handleSettingsChange() {
 
             // Hide log in button and show comment form
             for (let l__Film__Index in g__Films) {
-                if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
+                if (g__Logged__User != undefined) document.getElementById(("inputNickname" + g__Films[l__Film__Index].identifier)).value = g__Logged__User.name;
 
                 let commentsArray = g__Films[l__Film__Index].comment.filter(comment => comment.author.name == previousUserName);
 
@@ -144,13 +144,13 @@ function handleSettingsChange() {
                     commentsArray[commentIndex].author.name = l__Data[0].value;
                 }
 
-                const lCommentSection = document.getElementById(("scrollviewContent" + l__Film__Index))
+                const lCommentSection = document.getElementById(("scrollviewContent" + g__Films[l__Film__Index].identifier))
 
                 while (lCommentSection.firstChild) {
                     lCommentSection.removeChild(lCommentSection.lastChild);
                 }
 
-                appendComments(lCommentSection, g__Films[l__Film__Index].comment, l__Film__Index);
+                appendComments(lCommentSection, g__Films[l__Film__Index].comment, g__Films[l__Film__Index].identifier);
             }
         } else {
             NewAlert('error', "Ha ocurrido un error inesperado", ' ', false, "Close", false, 1000);
@@ -210,16 +210,16 @@ function enableAddComments() {
 
     // Hide log in button and show comment form
     for (let l__Film__Index in l__Showing__Films) {
-        $(("#loginModalBtn" + l__Film__Index)).addClass("d-none");
-        $(("#commentForm" + l__Film__Index)).removeClass("d-none");
-        $(("#commentFormBtn" + l__Film__Index)).removeClass("d-none");
-        if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Film__Index)).value = g__Logged__User.name;
+        $(("#loginModalBtn" + l__Showing__Films[l__Film__Index].identifier)).addClass("d-none");
+        $(("#commentForm" + l__Showing__Films[l__Film__Index].identifier)).removeClass("d-none");
+        $(("#commentFormBtn" + l__Showing__Films[l__Film__Index].identifier)).removeClass("d-none");
+        if (g__Logged__User != undefined) document.getElementById(("inputNickname" + l__Showing__Films[l__Film__Index].identifier)).value = g__Logged__User.name;
 
-        const lCommentSection = document.getElementById(("scrollviewContent" + l__Film__Index))
+        const lCommentSection = document.getElementById(("scrollviewContent" + l__Showing__Films[l__Film__Index].identifier))
         while (lCommentSection.firstChild) {
             lCommentSection.removeChild(lCommentSection.lastChild);
         }
-        appendComments(lCommentSection, l__Showing__Films[l__Film__Index].comment, l__Film__Index);
+        appendComments(lCommentSection, l__Showing__Films[l__Film__Index].comment, l__Showing__Films[l__Film__Index].identifier);
     }
 }
 
@@ -229,14 +229,15 @@ function disableAddComments() {
     let l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
         
     for (let l__Film__Index in l__Showing__Films) {
-        $(("#loginModalBtn" + l__Film__Index)).removeClass("d-none");
-        $(("#commentForm" + l__Film__Index)).addClass("d-none");
-        $(("#commentFormBtn" + l__Film__Index)).addClass("d-none");
+        $(("#loginModalBtn" + l__Showing__Films[l__Film__Index].identifier)).removeClass("d-none");
+        $(("#commentForm" + l__Showing__Films[l__Film__Index].identifier)).addClass("d-none");
+        $(("#commentFormBtn" + l__Showing__Films[l__Film__Index].identifier)).addClass("d-none");
 
-        const lCommentSection = document.getElementById(("scrollviewContent" + l__Film__Index))
+        const lCommentSection = document.getElementById(("scrollviewContent" + l__Showing__Films[l__Film__Index].identifier))
+
         while (lCommentSection.firstChild) {
             lCommentSection.removeChild(lCommentSection.lastChild);
         }
-        appendComments(lCommentSection, l__Showing__Films[l__Film__Index].comment, l__Film__Index);
+        appendComments(lCommentSection, l__Showing__Films[l__Film__Index].comment, l__Showing__Films[l__Film__Index].identifier);
     }
 }

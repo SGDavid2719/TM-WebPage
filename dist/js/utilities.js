@@ -24,16 +24,16 @@
         allowEscapeKey: false,
     }).then((result) => {
         if (result.isConfirmed) {
-            handleDeleteComment(deleteCommentFilmIndex, deleteCommentIndex);
-            const lCommentSection = document.getElementById(("scrollviewContent" + deleteCommentFilmIndex))
+            handleDeleteComment(deleteCommentFilmIdentifier, deleteCommentIndex);
+            const lCommentSection = document.getElementById(("scrollviewContent" + deleteCommentFilmIdentifier))
 
             while (lCommentSection.firstChild) {
                 lCommentSection.removeChild(lCommentSection.lastChild);
             }
 
-            appendComments(lCommentSection, g__Films[deleteCommentFilmIndex].comment, deleteCommentFilmIndex);
+            appendComments(lCommentSection, g__Films.filter(film => film.identifier == deleteCommentFilmIdentifier)[0].comment, deleteCommentFilmIdentifier);
         } else {
-            deleteCommentFilmIndex = undefined;
+            deleteCommentFilmIdentifier = undefined;
             deleteCommentIndex = undefined;
         }
     });
