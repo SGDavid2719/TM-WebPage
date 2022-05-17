@@ -128,6 +128,9 @@ function handleSettingsChange() {
             l__Sign__In__User__Aux[0].description = l__Data[2].value;
             l__Sign__In__User__Aux[0].name = l__Data[0].value;
 
+            // Update usuarios.json
+            saveUserChanges(g__Users);
+
             NewAlert('success', "Cambios guardados correctamente", ' ', false, "Close", false, 1000);
 
             document.getElementById("settingsForm").reset();
@@ -152,6 +155,9 @@ function handleSettingsChange() {
 
                 appendComments(lCommentSection, g__Films[l__Film__Index].comment, g__Films[l__Film__Index].identifier);
             }
+
+            // Update peliculas.json
+            saveCommentChanges(g__Films);
         } else {
             NewAlert('error', "Ha ocurrido un error inesperado", ' ', false, "Close", false, 1000);
         }

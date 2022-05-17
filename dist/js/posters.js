@@ -767,13 +767,14 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, iden
 
 function handleEditComment(comments, commentIndex, identifier) {
 
-    let lFilteredFilms = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
-
     var cloneArray = comments.slice();
 
     cloneArray.splice(commentIndex,1);
 
-    lFilteredFilms.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
+    g__Films.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
+
+    // Update peliculas.json
+    saveCommentChanges(g__Films);
 }
 
 function handleDeleteComment(identifier, pDeleteCommentIndex) {
@@ -783,11 +784,14 @@ function handleDeleteComment(identifier, pDeleteCommentIndex) {
     cloneArray.splice(pDeleteCommentIndex,1);
 
     g__Films.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
+
+    // Update peliculas.json
+    saveCommentChanges(g__Films);
 }
 
 async function createPopover(searchTerm) {
 
-    let searchTermData = undefined //await fetchWikipediaInfo(searchTerm);
+    let searchTermData = await fetchWikipediaInfo(searchTerm);
 
     let popover = document.createElement("a");
     popover.setAttribute("tabindex", "0");

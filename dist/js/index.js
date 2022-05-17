@@ -10,8 +10,6 @@ $(document).ready(function () {
         .then((result) => {
             g__Tweets = result;
 
-            // DELETE
-            console.log(g__Tweets);
         }); 
 
     fetch('./json/peliculas.json')
@@ -20,12 +18,11 @@ $(document).ready(function () {
         .then(async (result) => {
             g__Films = result;
 
-            // DELETE
-            console.log(g__Films);
-
             await generatePosters(g__Films);
             fillFilters();
             enablePostersButtons(g__Films);
+
+            setTimeout(() => { $("#loaderModal").modal("hide") }, 1000);
         });   
         
     fetch('./json/usuarios.json')
@@ -96,8 +93,6 @@ $(document).ready(function () {
         // On comment modal show, insert user name
         if (g__Logged__User != undefined) document.getElementById("inputNickname").value = g__Logged__User.name;
     });
-
-    //setTimeout(() => { $("#loaderModal").modal("hide") }, 4500);
 
     ScrollReveal().reveal('.masthead');
     ScrollReveal().reveal('#films', { delay: 1000 });
