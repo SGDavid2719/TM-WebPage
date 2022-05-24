@@ -28,7 +28,7 @@ async function generatePosters(p__Films) {
     });
 
     // Hide loading panel
-    //$("#loaderModal").modal("hide");
+    $("#loaderModal").modal("hide");
 }
 
 /*
@@ -325,7 +325,8 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
 
     // For each actor
     for (l__Item in p__Film.actor) {
-        let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = await createPopover(p__Film.actor[l__Item].name);
+        let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = document.createTextNode(p__Film.actor[l__Item].name);
+        //await createPopover(p__Film.actor[l__Item].name);
         l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Text__Node);
     }    
 

@@ -2,7 +2,7 @@
 var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined;
 
 $(document).ready(function () {
-    //$('#loaderModal').modal('toggle');
+    $('#loaderModal').modal('toggle');
 
     fetch('./json/tweets.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
