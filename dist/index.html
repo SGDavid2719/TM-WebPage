@@ -52,7 +52,7 @@
             <div class="col-2">
                 <button id="basicSearchBtn" class="btn btn-outline-primary my-2 my-sm-0">Buscar</button>
             </div>
-            <div class="col-1">
+            <div class="d-none d-xxl-block col-1">
                 <!-- Button trigger modal -->
                 <button id="advancedSearch" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#advancedSearchModal">
@@ -66,7 +66,7 @@
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
-                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarResponsive">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#films">Peliculas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
@@ -86,6 +86,10 @@
                                         data-bs-target="#userModal">Iniciar sesión</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item d-block d-lg-none"><button id="advancedSearch2" type="button"
+                                class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#advancedSearchModal">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button></li>
                     </ul>
                 </div>
             </div>
