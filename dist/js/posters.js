@@ -88,7 +88,7 @@ function generateFilmPoster(p__FilmsContainer, p__Film) {
     // Create caption heading (div)
     let l__Portfolio__Caption__Subheading__Div = document.createElement("div");
     // Format div
-    l__Portfolio__Caption__Subheading__Div.setAttribute("class", "portfolio-caption-subheading text-muted");
+    l__Portfolio__Caption__Subheading__Div.setAttribute("class", "portfolio-caption-subheading");
     // Create text node
     let l__Portfolio__Caption__Subheading__Text__Node = document.createTextNode(p__Film.releasedEvent.name);
     // Append text node
@@ -149,7 +149,8 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     let l__Close__Modal__Img = document.createElement("img");
     // Format div
     l__Close__Modal__Img.setAttribute("src", "assets/img/close-icon.svg");
-    l__Close__Modal__Div.setAttribute("alt", "Close modal");
+    l__Close__Modal__Img.setAttribute("alt", "Close modal");
+    l__Close__Modal__Img.setAttribute("aria-label", "Close modal");
 
     // Append img into div
     l__Close__Modal__Div.appendChild(l__Close__Modal__Img);
