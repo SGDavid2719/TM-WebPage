@@ -1,5 +1,5 @@
 // Globals
-var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined;
+var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined, g__Books = [];
 
 $(document).ready(function () {
     $('#loaderModal').modal('toggle');

@@ -1,13 +1,13 @@
 function handleSignIn() {
     // On sign in button click
     event.preventDefault();
-    let l__Data = $("#singInForm").serializeArray();
+    const l__Data = $("#singInForm").serializeArray();
 
-    let l__Sign__In__User__Aux = g__Users.filter(l__Element => l__Element.email == l__Data[0].value);
+    const l__Sign__In__User__Aux = g__Users.filter(l__Element => l__Element.email == l__Data[0].value);
 
     // If this user exists
     if (l__Sign__In__User__Aux.length == 1) {
-        let l__Sign__In__User = l__Sign__In__User__Aux[0];
+        const l__Sign__In__User = l__Sign__In__User__Aux[0];
         // If wrong password
         if (l__Sign__In__User.description != l__Data[1].value) {
             NewAlert('error', "Contraseña incorrecta", ' ', false, "Close", false, 1000);
@@ -39,12 +39,12 @@ function handleSignIn() {
 function handleLogIn() {
     // On log in button click
     event.preventDefault();
-    let l__Data = $("#logInForm").serializeArray();
+    const l__Data = $("#logInForm").serializeArray();
 
     // If name is not empty, if email is valid, if passwords are equal and password is longer than 7
     if (l__Data[0].value != "" && l__Data[1].value.includes("@") && l__Data[2].value == l__Data[3].value && l__Data[2].value.length >= 8) {
 
-        let l__Sign__In__User__Aux = g__Users.filter(l__Element => l__Element.email == l__Data[1].value);
+        const l__Sign__In__User__Aux = g__Users.filter(l__Element => l__Element.email == l__Data[1].value);
 
         // If this does not exists, then create
         if (l__Sign__In__User__Aux.length == 0) {
@@ -112,7 +112,7 @@ function setSettings() {
 function handleSettingsChange() {
     // On user settings update
     event.preventDefault();
-    let l__Data = $("#settingsForm").serializeArray();
+    const l__Data = $("#settingsForm").serializeArray();
 
     // If name is not empty, if email is valid, if passwords are equal and password is longer than 7
     if (l__Data[0].value != "" && l__Data[1].value.includes("@") && l__Data[2].value == l__Data[3].value && l__Data[2].value.length >= 8) {
@@ -122,7 +122,7 @@ function handleSettingsChange() {
         // If this user exists, then update
         if (l__Sign__In__User__Aux.length == 1) {
 
-            let previousUserName = g__Logged__User.name;
+            const previousUserName = g__Logged__User.name;
 
             l__Sign__In__User__Aux[0].email = l__Data[1].value;
             l__Sign__In__User__Aux[0].description = l__Data[2].value;
@@ -141,7 +141,7 @@ function handleSettingsChange() {
             for (let l__Film__Index in g__Films) {
                 if (g__Logged__User != undefined) document.getElementById(("inputNickname" + g__Films[l__Film__Index].identifier)).value = g__Logged__User.name;
 
-                let commentsArray = g__Films[l__Film__Index].comment.filter(comment => comment.author.name == previousUserName);
+                const commentsArray = g__Films[l__Film__Index].comment.filter(comment => comment.author.name == previousUserName);
 
                 for (let commentIndex in commentsArray) {
                     commentsArray[commentIndex].author.name = l__Data[0].value;
@@ -195,7 +195,7 @@ function onSignInCheckBox() {
 
 function showPersonalDataError(p__Data) {
     // Destructuring
-    let [l__Email, l__Password, l__Confirm__Password] = p__Data;
+    const [l__Email, l__Password, l__Confirm__Password] = p__Data;
     // Show errors
     if (!l__Email.value.includes("@") && l__Password.value != l__Confirm__Password.value) {
         NewAlert('error', "Introduzca un correo válido e introduzca una contraseña válida", ' ', false, "Close", false, 1000);
@@ -212,7 +212,7 @@ function showPersonalDataError(p__Data) {
 
 function enableAddComments() {
 
-    let l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
+    const l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
 
     // Hide log in button and show comment form
     for (let l__Film__Index in l__Showing__Films) {
@@ -232,7 +232,7 @@ function enableAddComments() {
 function disableAddComments() {
     // Show login button and hide comments form
 
-    let l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
+    const l__Showing__Films = (g__Filtered__Films.length > 0) ? g__Filtered__Films : g__Films;
         
     for (let l__Film__Index in l__Showing__Films) {
         $(("#loginModalBtn" + l__Showing__Films[l__Film__Index].identifier)).removeClass("d-none");

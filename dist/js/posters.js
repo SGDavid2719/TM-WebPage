@@ -2,10 +2,10 @@ var deleteCommentFilmIdentifier = undefined, deleteCommentIndex = undefined;
 
 async function generatePosters(p__Films) {
     // Get films container
-    let l__FilmsContainer = document.getElementById("filmsContainer");
+    const l__FilmsContainer = document.getElementById("filmsContainer");
 
     // Get portfolio container
-    let l__PortfolioContainer = document.getElementById("portfolioContainer");
+    const l__PortfolioContainer = document.getElementById("portfolioContainer");
 
     // Iterate over each film
     for (l__Index in p__Films) {
@@ -16,14 +16,14 @@ async function generatePosters(p__Films) {
 
         createTwitterWidgets(p__Films[l__Index].identifier, g__Tweets.filter(tweet => tweet.headline == p__Films[l__Index].identifier));
 
-        //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
+        setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
 
     // Important
     twttr.widgets.load();
 
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl)
     });
 
@@ -43,23 +43,23 @@ async function generatePosters(p__Films) {
 */
 function generateFilmPoster(p__FilmsContainer, p__Film) {
     // Create film div container
-    let l__Film__Div = document.createElement("div");
+    const l__Film__Div = document.createElement("div");
     // Format div
     l__Film__Div.setAttribute("id", ("film"+p__Film.identifier));
     l__Film__Div.setAttribute("class", "col-lg-4 col-sm-6 mb-4");
 
     // Create item (div)
-    let l__Portfolio__Item__Div = document.createElement("div");
+    const l__Portfolio__Item__Div = document.createElement("div");
     // Format div
     l__Portfolio__Item__Div.setAttribute("class", "portfolio-item");
 
-    let l__Portfolio__Link__A = document.createElement("a");
+    const l__Portfolio__Link__A = document.createElement("a");
     // Format a
     l__Portfolio__Link__A.setAttribute("class", "portfolio-link");
     l__Portfolio__Link__A.setAttribute("data-bs-toggle", "modal");
     l__Portfolio__Link__A.setAttribute("href", ("#portfolioModal" + p__Film.identifier));
 
-    let l__Portfolio__Img = document.createElement("img");
+    const l__Portfolio__Img = document.createElement("img");
     // Format img
     l__Portfolio__Img.setAttribute("class", "img-fluid");
     l__Portfolio__Img.setAttribute("src", p__Film.image[0].name);
@@ -120,7 +120,7 @@ function generateFilmPoster(p__FilmsContainer, p__Film) {
 */
 async function generateFilmModal(p__PortfolioContainer, p__Film) {
     // Create portfolio div container
-    let l__Portfolio__Div = document.createElement("div");
+    const l__Portfolio__Div = document.createElement("div");
     // Format div
     l__Portfolio__Div.setAttribute("class", "portfolio-modal modal fade");
     l__Portfolio__Div.setAttribute("id", ("portfolioModal" + p__Film.identifier));
@@ -129,17 +129,17 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     l__Portfolio__Div.setAttribute("aria-hidden", "true");
 
     // Create modal dialog div 
-    let l__Modal__Dialog__Div = document.createElement("div");
+    const l__Modal__Dialog__Div = document.createElement("div");
     // Format div
     l__Modal__Dialog__Div.setAttribute("class", "modal-dialog");
 
     // Create modal dialog div 
-    let l__Modal__Content__Div = document.createElement("div");
+    const l__Modal__Content__Div = document.createElement("div");
     // Format div
     l__Modal__Content__Div.setAttribute("class", "modal-content");
 
     // Create close modal div 
-    let l__Close__Modal__Div = document.createElement("div");
+    const l__Close__Modal__Div = document.createElement("div");
     // Format div
     l__Close__Modal__Div.setAttribute("id", ("filmCloseModalBtn" + p__Film.identifier));
     l__Close__Modal__Div.setAttribute("class", "close-modal");
@@ -781,7 +781,7 @@ function handleEditComment(comments, commentIndex, identifier) {
 
 function handleDeleteComment(identifier, pDeleteCommentIndex) {
 
-    var cloneArray = g__Films.filter(film => film.identifier == identifier)[0].comment.slice();
+    let cloneArray = g__Films.filter(film => film.identifier == identifier)[0].comment.slice();
 
     cloneArray.splice(pDeleteCommentIndex,1);
 

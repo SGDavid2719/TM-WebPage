@@ -30,10 +30,10 @@ function getGenres() {
 }
 
 function getCountries() {
-    let countries = [...new Set(g__Films.map(l__Films => l__Films.countryOfOrigin.name))];
+    const countries = [...new Set(g__Films.map(l__Films => l__Films.countryOfOrigin.name))];
     l__Distinct__Countries__Array = countries.sort((_firstCountry, _secondCountry) => {
-        let firstCountry = _firstCountry.toLowerCase();
-        let secondCountry = _secondCountry.toLowerCase();
+        const firstCountry = _firstCountry.toLowerCase();
+        const secondCountry = _secondCountry.toLowerCase();
         if (firstCountry < secondCountry) return -1;
         if (firstCountry > secondCountry) return 1;
         return 0;
@@ -65,16 +65,16 @@ function fillGenreDropdown() {
 }
 
 function fillCountryDropdown() {
-    let l__Advanced__Search__Country__Select = document.getElementById("advancedSearchCountryInput");
+    const l__Advanced__Search__Country__Select = document.getElementById("advancedSearchCountryInput");
 
-    for (l__Country in l__Distinct__Countries__Array) {
+    l__Distinct__Countries__Array.forEach(country => {
         // Create option
-        let l__Country__Option = document.createElement("option");
-        l__Country__Option.textContent = l__Distinct__Countries__Array[l__Country];
-        l__Country__Option.setAttribute("value", l__Distinct__Countries__Array[l__Country]);
+        const l__Country__Option = document.createElement("option");
+        l__Country__Option.textContent = country;
+        l__Country__Option.setAttribute("value", country);
         // Append option
         l__Advanced__Search__Country__Select.appendChild(l__Country__Option);
-    }
+    });
 }
 
 function fillYearDropdown() {

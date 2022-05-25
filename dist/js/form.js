@@ -1,12 +1,12 @@
 function handleSubmit (p__Form__Container) {
 
-    let l__Data = $(("#" + p__Form__Container)).serializeArray();
+    const l__Data = $(("#" + p__Form__Container)).serializeArray();
 
     if (l__Data[0].value != "" && l__Data[2].value != "") {
 
-        let l__Film__Identifier = p__Form__Container.split("commentForm")[1];
+        const l__Film__Identifier = p__Form__Container.split("commentForm")[1];
 
-        let l__Comment = { "@type": "Comment", "author": { "@type:": "Person", "name": l__Data[0].value}, "contentRating": {"@type": "Rating", "name": l__Data[1].value }, "name": l__Data[2].value }; 
+        const l__Comment = { "@type": "Comment", "author": { "@type:": "Person", "name": l__Data[0].value}, "contentRating": {"@type": "Rating", "name": l__Data[1].value }, "name": l__Data[2].value }; 
 
         g__Films.filter(film => film.identifier == l__Film__Identifier)[0].comment.push(l__Comment);
 
