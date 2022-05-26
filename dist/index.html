@@ -24,6 +24,8 @@
     <!-- Sweet Alert 2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"
         integrity="sha256-jAlCMntTd9fGH88UcgMsYno5+/I0cUCWdSjJ9qHMFRY=" crossorigin="anonymous"></script>
+    <!-- Tailwind CSS -->
+    <link href="css/output.css" rel="stylesheet">
     <!-- OWN JS -->
     <script src="js/index.js"></script>
     <script src="js/posters.js"></script>
@@ -55,8 +57,8 @@
             </div>
             <div class="d-none d-xxl-block col-1">
                 <!-- Button trigger modal -->
-                <button id="advancedSearch" type="button" class="btn btn-primary text-dark" data-bs-toggle="modal"
-                    data-bs-target="#advancedSearchModal" alt="búsqueda avanzada">
+                <button id="advancedSearch" type="button" class="btn btn-primary hover:text-black"
+                    data-bs-toggle="modal" data-bs-target="#advancedSearchModal" alt="búsqueda avanzada">
                     Búsqueda avanzada
                 </button>
             </div>
@@ -350,9 +352,9 @@
     </section>
 
     <!-- Advertising -->
-    <section class="page-section bg-light" id="advertising">
-        <div id="dishesCarousel" class="carousel slide" data-bs-ride="carousel">
-
+    <section class="page-section bg-light flex flex-col" id="advertising">
+        <div class=" w-2/3 mx-auto text-center text-2xl font-semibold mb-2">Publicidad</div>
+        <div id="dishesCarousel" class="carousel slide relative w-1/2 mx-auto" data-bs-ride="carousel">
         </div>
     </section>
 

@@ -1,4 +1,5 @@
-var deleteCommentFilmIdentifier = undefined, deleteCommentIndex = undefined;
+var deleteCommentFilmIdentifier = undefined,
+    deleteCommentIndex = undefined;
 
 async function generatePosters(p__Films) {
     // Get films container
@@ -9,12 +10,16 @@ async function generatePosters(p__Films) {
 
     // Iterate over each film
     for (l__Index in p__Films) {
-
         generateFilmPoster(l__FilmsContainer, p__Films[l__Index]);
 
         await generateFilmModal(l__PortfolioContainer, p__Films[l__Index]);
 
-        createTwitterWidgets(p__Films[l__Index].identifier, g__Tweets.filter(tweet => tweet.headline == p__Films[l__Index].identifier));
+        createTwitterWidgets(
+            p__Films[l__Index].identifier,
+            g__Tweets.filter(
+                (tweet) => tweet.headline == p__Films[l__Index].identifier
+            )
+        );
 
         //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
@@ -22,9 +27,11 @@ async function generatePosters(p__Films) {
     // Important
     twttr.widgets.load();
 
-    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    const popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+    );
     popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
+        return new bootstrap.Popover(popoverTriggerEl);
     });
 
     // Hide loading panel
@@ -33,19 +40,19 @@ async function generatePosters(p__Films) {
 
 /*
  *  Genera el poster de una pelicula pasada por parámetros. Se añade al contenedor de pósters.
- *  
+ *
  *  @example GenerateFilm("<div>", {}, 1)
- * 
+ *
  *  @param p__FilmsContainer -
  *  @param p__Film -
  *  @param p__Film.identifier
- *  
-*/
+ *
+ */
 function generateFilmPoster(p__FilmsContainer, p__Film) {
     // Create film div container
     const l__Film__Div = document.createElement("div");
     // Format div
-    l__Film__Div.setAttribute("id", ("film"+p__Film.identifier));
+    l__Film__Div.setAttribute("id", "film" + p__Film.identifier);
     l__Film__Div.setAttribute("class", "col-lg-4 col-sm-6 mb-4");
 
     // Create item (div)
@@ -57,7 +64,10 @@ function generateFilmPoster(p__FilmsContainer, p__Film) {
     // Format a
     l__Portfolio__Link__A.setAttribute("class", "portfolio-link");
     l__Portfolio__Link__A.setAttribute("data-bs-toggle", "modal");
-    l__Portfolio__Link__A.setAttribute("href", ("#portfolioModal" + p__Film.identifier));
+    l__Portfolio__Link__A.setAttribute(
+        "href",
+        "#portfolioModal" + p__Film.identifier
+    );
 
     const l__Portfolio__Img = document.createElement("img");
     // Format img
@@ -79,24 +89,40 @@ function generateFilmPoster(p__FilmsContainer, p__Film) {
     // Create caption heading (div)
     let l__Portfolio__Caption__Heading__Div = document.createElement("div");
     // Format div
-    l__Portfolio__Caption__Heading__Div.setAttribute("class", "portfolio-caption-heading");
+    l__Portfolio__Caption__Heading__Div.setAttribute(
+        "class",
+        "portfolio-caption-heading"
+    );
     // Create text node
-    let l__Portfolio__Caption__Heading__Text__Node = document.createTextNode(p__Film.name);
+    let l__Portfolio__Caption__Heading__Text__Node = document.createTextNode(
+        p__Film.name
+    );
     // Append text node
-    l__Portfolio__Caption__Heading__Div.appendChild(l__Portfolio__Caption__Heading__Text__Node);
+    l__Portfolio__Caption__Heading__Div.appendChild(
+        l__Portfolio__Caption__Heading__Text__Node
+    );
 
     // Create caption heading (div)
     let l__Portfolio__Caption__Subheading__Div = document.createElement("div");
     // Format div
-    l__Portfolio__Caption__Subheading__Div.setAttribute("class", "portfolio-caption-subheading");
+    l__Portfolio__Caption__Subheading__Div.setAttribute(
+        "class",
+        "portfolio-caption-subheading"
+    );
     // Create text node
-    let l__Portfolio__Caption__Subheading__Text__Node = document.createTextNode(p__Film.releasedEvent.name);
+    let l__Portfolio__Caption__Subheading__Text__Node = document.createTextNode(
+        p__Film.releasedEvent.name
+    );
     // Append text node
-    l__Portfolio__Caption__Subheading__Div.appendChild(l__Portfolio__Caption__Subheading__Text__Node);
+    l__Portfolio__Caption__Subheading__Div.appendChild(
+        l__Portfolio__Caption__Subheading__Text__Node
+    );
 
     // Append captions into caption
     l__Portfolio__Caption__Div.appendChild(l__Portfolio__Caption__Heading__Div);
-    l__Portfolio__Caption__Div.appendChild(l__Portfolio__Caption__Subheading__Div);
+    l__Portfolio__Caption__Div.appendChild(
+        l__Portfolio__Caption__Subheading__Div
+    );
 
     // Append caption into item
     l__Portfolio__Item__Div.appendChild(l__Portfolio__Caption__Div);
@@ -110,42 +136,45 @@ function generateFilmPoster(p__FilmsContainer, p__Film) {
 
 /*
  *  Genera el poster de una pelicula pasada por parámetros. Se añade al contenedor de pósters.
- *  
+ *
  *  @example generateFilmModal("<div>", {}, 1)
- * 
+ *
  *  @param p__PortfolioContainer -
  *  @param p__Film -
  *  @param p__Film.identifier
- *  
-*/
+ *
+ */
 async function generateFilmModal(p__PortfolioContainer, p__Film) {
     // Create portfolio div container
     const l__Portfolio__Div = document.createElement("div");
     // Format div
     l__Portfolio__Div.setAttribute("class", "portfolio-modal modal fade");
-    l__Portfolio__Div.setAttribute("id", ("portfolioModal" + p__Film.identifier));
+    l__Portfolio__Div.setAttribute("id", "portfolioModal" + p__Film.identifier);
     l__Portfolio__Div.setAttribute("tabindex", "-1");
     l__Portfolio__Div.setAttribute("role", "dialog");
     l__Portfolio__Div.setAttribute("aria-hidden", "true");
 
-    // Create modal dialog div 
+    // Create modal dialog div
     const l__Modal__Dialog__Div = document.createElement("div");
     // Format div
     l__Modal__Dialog__Div.setAttribute("class", "modal-dialog");
 
-    // Create modal dialog div 
+    // Create modal dialog div
     const l__Modal__Content__Div = document.createElement("div");
     // Format div
     l__Modal__Content__Div.setAttribute("class", "modal-content");
 
-    // Create close modal div 
+    // Create close modal div
     const l__Close__Modal__Div = document.createElement("div");
     // Format div
-    l__Close__Modal__Div.setAttribute("id", ("filmCloseModalBtn" + p__Film.identifier));
+    l__Close__Modal__Div.setAttribute(
+        "id",
+        "filmCloseModalBtn" + p__Film.identifier
+    );
     l__Close__Modal__Div.setAttribute("class", "close-modal");
     l__Close__Modal__Div.setAttribute("data-bs-dismiss", "modal");
 
-    // Create close modal img 
+    // Create close modal img
     let l__Close__Modal__Img = document.createElement("img");
     // Format div
     l__Close__Modal__Img.setAttribute("src", "assets/img/close-icon.svg");
@@ -155,58 +184,60 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     // Append img into div
     l__Close__Modal__Div.appendChild(l__Close__Modal__Img);
 
-    // Create container div 
+    // Create container div
     let l__Container__Div = document.createElement("div");
     // Format div
     l__Container__Div.setAttribute("class", "container");
 
-    // Create row div 
+    // Create row div
     let l__Row__Div = document.createElement("div");
     // Format div
     l__Row__Div.setAttribute("class", "row");
 
-    // Create row h2 
+    // Create row h2
     let l__Row__H2 = document.createElement("h2");
     // Format div
     l__Row__H2.setAttribute("class", "text-uppercase text-lg-center");
 
-    // Create row h2 text node 
+    // Create row h2 text node
     let l__Row__H2__Text__Node = document.createTextNode(p__Film.name);
 
     // Append text node into h2
     l__Row__H2.appendChild(l__Row__H2__Text__Node);
 
-    // Create row p 
+    // Create row p
     let l__Row__P = document.createElement("p");
     // Format div
     l__Row__P.setAttribute("class", "item-intro text-muted text-lg-center");
 
-    // Create row h2 text node 
-    let l__Row__P__Text__Node = document.createTextNode(p__Film.releasedEvent.name);
+    // Create row h2 text node
+    let l__Row__P__Text__Node = document.createTextNode(
+        p__Film.releasedEvent.name
+    );
 
     // Append text node into h2
     l__Row__P.appendChild(l__Row__P__Text__Node);
 
-    // Create row col div 
+    // Create row col div
     let l__Row__Col__Div = document.createElement("div");
     // Format div
     l__Row__Col__Div.setAttribute("class", "col-lg-6");
 
-    // Create row col modal body div 
+    // Create row col modal body div
     let l__Row__Col__IFrame = document.createElement("iframe");
     // Format a
-    l__Row__Col__IFrame.setAttribute("id", ("youtubeVideo" + p__Film.identifier));
+    l__Row__Col__IFrame.setAttribute("id", "youtubeVideo" + p__Film.identifier);
     l__Row__Col__IFrame.setAttribute("class", "modalIframe");
 
     // Append modal body (div) into row col (div)
     l__Row__Col__Div.appendChild(l__Row__Col__IFrame);
 
-    // Create row second col div 
+    // Create row second col div
     let l__Row__Second__Col__Div = document.createElement("div");
     // Format div
     l__Row__Second__Col__Div.setAttribute("class", "col-lg-6 text-lg-start");
 
-    // Create row second col div list 
+    // Create row second col div list
     let l__Row__Second__Col__Div__List = document.createElement("ul");
     // Format ul
     l__Row__Second__Col__Div__List.setAttribute("class", "list-inline");
@@ -214,163 +245,241 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     // DURATION
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Duration = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Duration =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Duration__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Duration__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Duration__Strong__Text__Node = document.createTextNode("Duración: ");
+    let l__Row__Second__Col__Div__List__Item__Duration__Strong__Text__Node =
+        document.createTextNode("Duración: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Duration__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Duration__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Duration__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Duration__Strong__Text__Node
+    );
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Duration__Text__Node = document.createTextNode(p__Film.duration.name);
+    // Create row second col div list item content text node
+    let l__Row__Second__Col__Div__List__Item__Duration__Text__Node =
+        document.createTextNode(p__Film.duration.name);
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Duration.appendChild(l__Row__Second__Col__Div__List__Item__Duration__Strong);
-    l__Row__Second__Col__Div__List__Item__Duration.appendChild(l__Row__Second__Col__Div__List__Item__Duration__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Duration.appendChild(
+        l__Row__Second__Col__Div__List__Item__Duration__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Duration.appendChild(
+        l__Row__Second__Col__Div__List__Item__Duration__Text__Node
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Duration);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Duration
+    );
 
     // COUNTRY
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Country = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Country =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Country__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Country__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Country__Strong__Text__Node = document.createTextNode("País: ");
+    let l__Row__Second__Col__Div__List__Item__Country__Strong__Text__Node =
+        document.createTextNode("País: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Country__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Country__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Country__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Country__Strong__Text__Node
+    );
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Country__Text__Node = document.createTextNode(p__Film.countryOfOrigin.name);
+    // Create row second col div list item content text node
+    let l__Row__Second__Col__Div__List__Item__Country__Text__Node =
+        document.createTextNode(p__Film.countryOfOrigin.name);
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Country.appendChild(l__Row__Second__Col__Div__List__Item__Country__Strong);
-    l__Row__Second__Col__Div__List__Item__Country.appendChild(l__Row__Second__Col__Div__List__Item__Country__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Country.appendChild(
+        l__Row__Second__Col__Div__List__Item__Country__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Country.appendChild(
+        l__Row__Second__Col__Div__List__Item__Country__Text__Node
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Country);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Country
+    );
 
     // DIRECTOR
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Director = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Director =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Director__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Director__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node = document.createTextNode("Dirección: ");
+    let l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node =
+        document.createTextNode("Dirección: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Director__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Director__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Director__Strong__Text__Node
+    );
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__A__Item__Director = await createPopover(p__Film.director.name);
+    let l__Row__Second__Col__Div__List__A__Item__Director = await createPopover(
+        p__Film.director.name
+    );
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__Item__Director__Strong);
-    l__Row__Second__Col__Div__List__Item__Director.appendChild(l__Row__Second__Col__Div__List__A__Item__Director);
+    l__Row__Second__Col__Div__List__Item__Director.appendChild(
+        l__Row__Second__Col__Div__List__Item__Director__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Director.appendChild(
+        l__Row__Second__Col__Div__List__A__Item__Director
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Director);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Director
+    );
 
     // MUSIC
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Music = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Music =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Music__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Music__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node = document.createTextNode("Música: ");
+    let l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node =
+        document.createTextNode("Música: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Music__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Music__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Music__Strong__Text__Node
+    );
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = await createPopover(p__Film.musicBy.name);
+    // Create row second col div list item content text node
+    let l__Row__Second__Col__Div__List__Item__Music__Text__Node =
+        await createPopover(p__Film.musicBy.name);
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Music.appendChild(l__Row__Second__Col__Div__List__Item__Music__Strong);
-    l__Row__Second__Col__Div__List__Item__Music.appendChild(l__Row__Second__Col__Div__List__Item__Music__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Music.appendChild(
+        l__Row__Second__Col__Div__List__Item__Music__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Music.appendChild(
+        l__Row__Second__Col__Div__List__Item__Music__Text__Node
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Music);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Music
+    );
 
     // ACTOR
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Actor = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Actor =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Actor__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Actor__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node = document.createTextNode("Reparto: ");
+    let l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node =
+        document.createTextNode("Reparto: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Actor__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Actor__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Actor__Strong__Text__Node
+    );
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Strong);
+    l__Row__Second__Col__Div__List__Item__Actor.appendChild(
+        l__Row__Second__Col__Div__List__Item__Actor__Strong
+    );
 
     // For each actor
     for (l__Item in p__Film.actor) {
-        let l__Row__Second__Col__Div__List__Item__Actor__Text__Node = document.createTextNode(p__Film.actor[l__Item].name);
+        let l__Row__Second__Col__Div__List__Item__Actor__Text__Node =
+            document.createTextNode(p__Film.actor[l__Item].name);
         //await createPopover(p__Film.actor[l__Item].name);
-        l__Row__Second__Col__Div__List__Item__Actor.appendChild(l__Row__Second__Col__Div__List__Item__Actor__Text__Node);
-    }    
+        l__Row__Second__Col__Div__List__Item__Actor.appendChild(
+            l__Row__Second__Col__Div__List__Item__Actor__Text__Node
+        );
+    }
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Actor);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Actor
+    );
 
     // PRODUCTION COMPANY
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Production__Company = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Production__Company =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Production__Company__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Production__Company__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Production__Company__Strong__Text__Node = document.createTextNode("Productora: ");
+    let l__Row__Second__Col__Div__List__Item__Production__Company__Strong__Text__Node =
+        document.createTextNode("Productora: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Production__Company__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Production__Company__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Production__Company__Strong__Text__Node
+    );
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node = document.createTextNode(p__Film.productionCompany.name);
+    // Create row second col div list item content text node
+    let l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node =
+        document.createTextNode(p__Film.productionCompany.name);
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Production__Company.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company__Strong);
-    l__Row__Second__Col__Div__List__Item__Production__Company.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Production__Company.appendChild(
+        l__Row__Second__Col__Div__List__Item__Production__Company__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Production__Company.appendChild(
+        l__Row__Second__Col__Div__List__Item__Production__Company__Text__Node
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Production__Company);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Production__Company
+    );
 
     // GENRE
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Genre = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Genre =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Genre__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Genre__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Genre__Strong__Text__Node = document.createTextNode("Género: ");
+    let l__Row__Second__Col__Div__List__Item__Genre__Strong__Text__Node =
+        document.createTextNode("Género: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Genre__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Genre__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Genre__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Genre__Strong__Text__Node
+    );
 
     // For each actor
     let l__Genres = "";
@@ -378,39 +487,58 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
         l__Genres += p__Film.genre[l__Item].name + ", ";
     }
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Genre__Text__Node = document.createTextNode(l__Genres);
+    // Create row second col div list item content text node
+    let l__Row__Second__Col__Div__List__Item__Genre__Text__Node =
+        document.createTextNode(l__Genres);
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Genre.appendChild(l__Row__Second__Col__Div__List__Item__Genre__Strong);
-    l__Row__Second__Col__Div__List__Item__Genre.appendChild(l__Row__Second__Col__Div__List__Item__Genre__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Genre.appendChild(
+        l__Row__Second__Col__Div__List__Item__Genre__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Genre.appendChild(
+        l__Row__Second__Col__Div__List__Item__Genre__Text__Node
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Genre);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Genre
+    );
 
     // SINOPSIS
 
     // Create row second col div list item
-    let l__Row__Second__Col__Div__List__Item__Sinopsis = document.createElement("li");
+    let l__Row__Second__Col__Div__List__Item__Sinopsis =
+        document.createElement("li");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Sinopsis__Strong = document.createElement("strong");
+    let l__Row__Second__Col__Div__List__Item__Sinopsis__Strong =
+        document.createElement("strong");
 
     // Create row second col div list item strong text node
-    let l__Row__Second__Col__Div__List__Item__Sinopsis__Strong__Text__Node = document.createTextNode("Sinopsis: ");
+    let l__Row__Second__Col__Div__List__Item__Sinopsis__Strong__Text__Node =
+        document.createTextNode("Sinopsis: ");
 
     // Append text node into strong
-    l__Row__Second__Col__Div__List__Item__Sinopsis__Strong.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis__Strong__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Sinopsis__Strong.appendChild(
+        l__Row__Second__Col__Div__List__Item__Sinopsis__Strong__Text__Node
+    );
 
-    // Create row second col div list item content text node 
-    let l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node = document.createTextNode(p__Film.description);
+    // Create row second col div list item content text node
+    let l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node =
+        document.createTextNode(p__Film.description);
 
     // Append text node into item
-    l__Row__Second__Col__Div__List__Item__Sinopsis.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis__Strong);
-    l__Row__Second__Col__Div__List__Item__Sinopsis.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node);
+    l__Row__Second__Col__Div__List__Item__Sinopsis.appendChild(
+        l__Row__Second__Col__Div__List__Item__Sinopsis__Strong
+    );
+    l__Row__Second__Col__Div__List__Item__Sinopsis.appendChild(
+        l__Row__Second__Col__Div__List__Item__Sinopsis__Text__Node
+    );
 
     // Append item into list
-    l__Row__Second__Col__Div__List.appendChild(l__Row__Second__Col__Div__List__Item__Sinopsis);
+    l__Row__Second__Col__Div__List.appendChild(
+        l__Row__Second__Col__Div__List__Item__Sinopsis
+    );
 
     // Append list (ul) into the second col (div)
     l__Row__Second__Col__Div.appendChild(l__Row__Second__Col__Div__List);
@@ -420,174 +548,341 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     // Create opinion section div
     let l__Row__Opinion__Section = document.createElement("div");
     // Format div
-    l__Row__Opinion__Section.setAttribute("id", ("opinionSection" + p__Film.identifier));
+    l__Row__Opinion__Section.setAttribute(
+        "id",
+        "opinionSection" + p__Film.identifier
+    );
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Form = document.createElement("form");
     // Format form
-    l__Row__Opinion__Section__Form.setAttribute("class", "text-lg-start row d-none");
-    l__Row__Opinion__Section__Form.setAttribute("id", ("commentForm" + p__Film.identifier));
+    l__Row__Opinion__Section__Form.setAttribute(
+        "class",
+        "text-lg-start row d-none"
+    );
+    l__Row__Opinion__Section__Form.setAttribute(
+        "id",
+        "commentForm" + p__Film.identifier
+    );
 
     // NICKNAME INPUT
 
     // Create opinion section div form name column
-    let l__Row__Opinion__Section__Form__Name__Col = document.createElement("div");
+    let l__Row__Opinion__Section__Form__Name__Col =
+        document.createElement("div");
     // Format column
-    l__Row__Opinion__Section__Form__Name__Col.setAttribute("class", "col-12 col-lg-6 p-1");
+    l__Row__Opinion__Section__Form__Name__Col.setAttribute(
+        "class",
+        "col-12 col-lg-6 p-1"
+    );
 
     // Create opinion section div form name column label
-    let l__Row__Opinion__Section__Form__Name__Col__Label = document.createElement("label");
+    let l__Row__Opinion__Section__Form__Name__Col__Label =
+        document.createElement("label");
     // Format form
-    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("class", "text-lg-start form-label");
-    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute("for", ("inputNickname" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Name__Col__Label.textContent = "Añade tu nombre";
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute(
+        "class",
+        "text-lg-start form-label"
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Label.setAttribute(
+        "for",
+        "inputNickname" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Label.textContent =
+        "Añade tu nombre";
 
     // Create opinion section div form name column input
-    let l__Row__Opinion__Section__Form__Name__Col__Input = document.createElement("input");
+    let l__Row__Opinion__Section__Form__Name__Col__Input =
+        document.createElement("input");
     // Format form
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("type", "text");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("maxlength", "40");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("id", ("inputNickname" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("name", ("inputNickname" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("aria-describedby", "nameInputHelp");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("placeholder", "p.e. David");
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("required", true);
-    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute("readonly", true);
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "type",
+        "text"
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "maxlength",
+        "40"
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "class",
+        "form-control"
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "id",
+        "inputNickname" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "name",
+        "inputNickname" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "aria-describedby",
+        "nameInputHelp"
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "placeholder",
+        "p.e. David"
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "required",
+        true
+    );
+    l__Row__Opinion__Section__Form__Name__Col__Input.setAttribute(
+        "readonly",
+        true
+    );
 
-    l__Row__Opinion__Section__Form__Name__Col.appendChild(l__Row__Opinion__Section__Form__Name__Col__Label);
-    l__Row__Opinion__Section__Form__Name__Col.appendChild(l__Row__Opinion__Section__Form__Name__Col__Input);
+    l__Row__Opinion__Section__Form__Name__Col.appendChild(
+        l__Row__Opinion__Section__Form__Name__Col__Label
+    );
+    l__Row__Opinion__Section__Form__Name__Col.appendChild(
+        l__Row__Opinion__Section__Form__Name__Col__Input
+    );
 
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Name__Col);
+    l__Row__Opinion__Section__Form.appendChild(
+        l__Row__Opinion__Section__Form__Name__Col
+    );
 
     // RATE SELECT
 
     // Create opinion section div form rate column
-    let l__Row__Opinion__Section__Form__Rate__Col = document.createElement("div");
+    let l__Row__Opinion__Section__Form__Rate__Col =
+        document.createElement("div");
     // Format column
-    l__Row__Opinion__Section__Form__Rate__Col.setAttribute("class", "col-12 col-lg-6 p-1");
+    l__Row__Opinion__Section__Form__Rate__Col.setAttribute(
+        "class",
+        "col-12 col-lg-6 p-1"
+    );
 
     // Create opinion section div form rate column label
-    let l__Row__Opinion__Section__Form__Rate__Col__Label = document.createElement("label");
+    let l__Row__Opinion__Section__Form__Rate__Col__Label =
+        document.createElement("label");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("class", "text-lg-start form-label");
-    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute("for", ("inputRate" + p__Film.identifier));
+    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute(
+        "class",
+        "text-lg-start form-label"
+    );
+    l__Row__Opinion__Section__Form__Rate__Col__Label.setAttribute(
+        "for",
+        "inputRate" + p__Film.identifier
+    );
     l__Row__Opinion__Section__Form__Rate__Col__Label.textContent = "Puntuación";
 
     // Create opinion section div form rate column select
-    let l__Row__Opinion__Section__Form__Rate__Col__Select = document.createElement("select");
+    let l__Row__Opinion__Section__Form__Rate__Col__Select =
+        document.createElement("select");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("class", "form-select");
-    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("id", ("inputRate" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute("name", ("inputRate" + p__Film.identifier));
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute(
+        "class",
+        "form-select"
+    );
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute(
+        "id",
+        "inputRate" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Rate__Col__Select.setAttribute(
+        "name",
+        "inputRate" + p__Film.identifier
+    );
 
     // Create opinion section div form rate column select option
-    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1 = document.createElement("option");
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1 =
+        document.createElement("option");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1.setAttribute("selected", true);
-    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1.textContent = "1";
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1.setAttribute(
+        "selected",
+        true
+    );
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1.textContent =
+        "1";
 
-    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1);
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Select__Option__1
+    );
 
     // Create opinion section div form rate column select option
-    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2 = document.createElement("option");
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2 =
+        document.createElement("option");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2.textContent = "2";
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2.textContent =
+        "2";
 
-    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2);
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Select__Option__2
+    );
 
     // Create opinion section div form rate column select option
-    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3 = document.createElement("option");
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3 =
+        document.createElement("option");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3.textContent = "3";
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3.textContent =
+        "3";
 
-    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3);
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Select__Option__3
+    );
 
     // Create opinion section div form rate column select option
-    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4 = document.createElement("option");
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4 =
+        document.createElement("option");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4.textContent = "4";
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4.textContent =
+        "4";
 
-    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4);
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Select__Option__4
+    );
 
     // Create opinion section div form rate column select option
-    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5 = document.createElement("option");
+    let l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5 =
+        document.createElement("option");
     // Format form
-    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5.textContent = "5";
+    l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5.textContent =
+        "5";
 
-    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5);
+    l__Row__Opinion__Section__Form__Rate__Col__Select.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Select__Option__5
+    );
 
-    l__Row__Opinion__Section__Form__Rate__Col.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Label);
-    l__Row__Opinion__Section__Form__Rate__Col.appendChild(l__Row__Opinion__Section__Form__Rate__Col__Select);
+    l__Row__Opinion__Section__Form__Rate__Col.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Label
+    );
+    l__Row__Opinion__Section__Form__Rate__Col.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col__Select
+    );
 
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Rate__Col);
+    l__Row__Opinion__Section__Form.appendChild(
+        l__Row__Opinion__Section__Form__Rate__Col
+    );
 
     // OPINION TEXTAREA
 
     // Create opinion section div form name column
-    let l__Row__Opinion__Section__Form__Opinion__Col = document.createElement("div");
+    let l__Row__Opinion__Section__Form__Opinion__Col =
+        document.createElement("div");
     // Format column
-    l__Row__Opinion__Section__Form__Opinion__Col.setAttribute("class", "col-12 p-1");
+    l__Row__Opinion__Section__Form__Opinion__Col.setAttribute(
+        "class",
+        "col-12 p-1"
+    );
 
     // Create opinion section div form name column label
-    let l__Row__Opinion__Section__Form__Opinion__Col__Label = document.createElement("label");
+    let l__Row__Opinion__Section__Form__Opinion__Col__Label =
+        document.createElement("label");
     // Format form
-    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("class", "text-lg-start form-label");
-    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute("for", ("inputComment" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Opinion__Col__Label.textContent = "Añade un comentario";
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute(
+        "class",
+        "text-lg-start form-label"
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.setAttribute(
+        "for",
+        "inputComment" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Label.textContent =
+        "Añade un comentario";
 
     // Create opinion section div form name column input
-    let l__Row__Opinion__Section__Form__Opinion__Col__Input = document.createElement("textarea");
+    let l__Row__Opinion__Section__Form__Opinion__Col__Input =
+        document.createElement("textarea");
     // Format form
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("class", "form-control");
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("id", ("inputComment" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("name", ("inputComment" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("aria-describedby", "opinionTextareaHelp");
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("placeholder", "p.e. Esta película...");
-    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute("required", true);
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute(
+        "class",
+        "form-control"
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute(
+        "id",
+        "inputComment" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute(
+        "name",
+        "inputComment" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute(
+        "aria-describedby",
+        "opinionTextareaHelp"
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute(
+        "placeholder",
+        "p.e. Esta película..."
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col__Input.setAttribute(
+        "required",
+        true
+    );
 
-    l__Row__Opinion__Section__Form__Opinion__Col.appendChild(l__Row__Opinion__Section__Form__Opinion__Col__Label);
-    l__Row__Opinion__Section__Form__Opinion__Col.appendChild(l__Row__Opinion__Section__Form__Opinion__Col__Input);
+    l__Row__Opinion__Section__Form__Opinion__Col.appendChild(
+        l__Row__Opinion__Section__Form__Opinion__Col__Label
+    );
+    l__Row__Opinion__Section__Form__Opinion__Col.appendChild(
+        l__Row__Opinion__Section__Form__Opinion__Col__Input
+    );
 
-    l__Row__Opinion__Section__Form.appendChild(l__Row__Opinion__Section__Form__Opinion__Col);
+    l__Row__Opinion__Section__Form.appendChild(
+        l__Row__Opinion__Section__Form__Opinion__Col
+    );
 
     // SUBMIT BUTTON
 
     // Create opinion section div form
     let l__Row__Opinion__Section__Form__Button = document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Button.setAttribute("id", ("commentFormBtn" + p__Film.identifier));
+    l__Row__Opinion__Section__Form__Button.setAttribute(
+        "id",
+        "commentFormBtn" + p__Film.identifier
+    );
     l__Row__Opinion__Section__Form__Button.setAttribute("class", "row d-none");
 
     // Create opinion section div form
-    let l__Row__Opinion__Section__Form__Button__Col = document.createElement("div");
+    let l__Row__Opinion__Section__Form__Button__Col =
+        document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Form__Button__Col.setAttribute("class", "col-12 p-1 d-flex justify-content-end");
+    l__Row__Opinion__Section__Form__Button__Col.setAttribute(
+        "class",
+        "col-12 p-1 d-flex justify-content-end"
+    );
 
     // Create opinion section div form
-    let l__Row__Opinion__Section__Form__Button__Col__Btn = document.createElement("button");
+    let l__Row__Opinion__Section__Form__Button__Col__Btn =
+        document.createElement("button");
     // Format form
-    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("class", "btn btn-primary");
-    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute("id", ("addComment" + p__Film.identifier));
-    l__Row__Opinion__Section__Form__Button__Col__Btn.textContent = "Añade tu comentario";
+    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute(
+        "class",
+        "btn btn-primary"
+    );
+    l__Row__Opinion__Section__Form__Button__Col__Btn.setAttribute(
+        "id",
+        "addComment" + p__Film.identifier
+    );
+    l__Row__Opinion__Section__Form__Button__Col__Btn.textContent =
+        "Añade tu comentario";
 
-    l__Row__Opinion__Section__Form__Button__Col.appendChild(l__Row__Opinion__Section__Form__Button__Col__Btn);
-    l__Row__Opinion__Section__Form__Button.appendChild(l__Row__Opinion__Section__Form__Button__Col);
+    l__Row__Opinion__Section__Form__Button__Col.appendChild(
+        l__Row__Opinion__Section__Form__Button__Col__Btn
+    );
+    l__Row__Opinion__Section__Form__Button.appendChild(
+        l__Row__Opinion__Section__Form__Button__Col
+    );
 
     // LOGIN
 
     let l__Login__Section = document.createElement("div");
-    l__Login__Section.setAttribute("id", ("loginModalBtn" + p__Film.identifier));
-    l__Login__Section.setAttribute("class", "row py-4 px-5 border rounded d-flex justify-content-center");
+    l__Login__Section.setAttribute("id", "loginModalBtn" + p__Film.identifier);
+    l__Login__Section.setAttribute(
+        "class",
+        "row py-4 px-5 border rounded d-flex justify-content-center"
+    );
     let l__Login__Section__Button = document.createElement("button");
     l__Login__Section__Button.setAttribute("type", "button");
-    l__Login__Section__Button.setAttribute("class", "btn btn-primary w-50");
+    l__Login__Section__Button.setAttribute(
+        "class",
+        "btn btn-primary w-50 text-dark"
+    );
     l__Login__Section__Button.setAttribute("data-bs-toggle", "modal");
     l__Login__Section__Button.setAttribute("data-bs-target", "#userModal");
-    l__Login__Section__Button.textContent = "Sign in to leave a comment";
+    l__Login__Section__Button.textContent =
+        "Inicia sesión para dejar un comentario";
 
     l__Login__Section.appendChild(l__Login__Section__Button);
-
 
     // COMMENTS
 
@@ -595,27 +890,44 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     let l__Row__Opinion__Section__Comments = document.createElement("div");
     // Format form
     l__Row__Opinion__Section__Comments.setAttribute("class", "row pt-4 p-1");
-    l__Row__Opinion__Section__Comments.setAttribute("id", ("commentSection" + p__Film.identifier));
+    l__Row__Opinion__Section__Comments.setAttribute(
+        "id",
+        "commentSection" + p__Film.identifier
+    );
 
     // Create opinion section div form
-    let l__Row__Opinion__Section__Comments__View = document.createElement("div");
+    let l__Row__Opinion__Section__Comments__View =
+        document.createElement("div");
     // Format form
-    l__Row__Opinion__Section__Comments__View.setAttribute("class", "p-3 p-lg-5 scrollviewContent col-12 col-md-7");
-    l__Row__Opinion__Section__Comments__View.setAttribute("id", ("scrollviewContent" + p__Film.identifier));
+    l__Row__Opinion__Section__Comments__View.setAttribute(
+        "class",
+        "p-3 p-lg-5 scrollviewContent col-12 col-md-7"
+    );
+    l__Row__Opinion__Section__Comments__View.setAttribute(
+        "id",
+        "scrollviewContent" + p__Film.identifier
+    );
 
-    appendComments(l__Row__Opinion__Section__Comments__View, p__Film.comment, p__Film.identifier);
+    appendComments(
+        l__Row__Opinion__Section__Comments__View,
+        p__Film.comment,
+        p__Film.identifier
+    );
 
-    l__Row__Opinion__Section__Comments.appendChild(l__Row__Opinion__Section__Comments__View);
+    l__Row__Opinion__Section__Comments.appendChild(
+        l__Row__Opinion__Section__Comments__View
+    );
 
     // Append form into comments section
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form);
     // Append form into comments section
-    l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Form__Button);
+    l__Row__Opinion__Section.appendChild(
+        l__Row__Opinion__Section__Form__Button
+    );
     // Append login into comments section
     l__Row__Opinion__Section.appendChild(l__Login__Section);
     // Append form into comments section
     l__Row__Opinion__Section.appendChild(l__Row__Opinion__Section__Comments);
-
 
     // Append content into row
     l__Row__Div.appendChild(l__Row__H2);
@@ -642,7 +954,6 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
 }
 
 function clearPosters() {
-
     // Get films container
     let l__FilmsContainer = document.getElementById("filmsContainer");
 
@@ -659,29 +970,46 @@ function clearPosters() {
 }
 
 function enablePostersButtons(p__Films) {
-
     // Iterate over each film
     for (let l__Film__Index in p__Films) {
-
-        $(("#addComment" + p__Films[l__Film__Index].identifier)).click(function () {
-            handleSubmit(("commentForm" + p__Films[l__Film__Index].identifier), ("scrollviewContent" + p__Films[l__Film__Index].identifier));
-        });
+        $("#addComment" + p__Films[l__Film__Index].identifier).click(
+            function () {
+                handleSubmit(
+                    "commentForm" + p__Films[l__Film__Index].identifier,
+                    "scrollviewContent" + p__Films[l__Film__Index].identifier
+                );
+            }
+        );
 
         // NEW
-        $(("#filmCloseModalBtn"+ p__Films[l__Film__Index].identifier)).click(function (event) {
-            // Clear settings form on modal close
-            document.getElementById(("commentForm" + p__Films[l__Film__Index].identifier)).reset();
-            if (g__Logged__User != undefined) document.getElementById(("inputNickname" + p__Films[l__Film__Index].identifier)).value = g__Logged__User.name;
-        });
-
+        $("#filmCloseModalBtn" + p__Films[l__Film__Index].identifier).click(
+            function (event) {
+                // Clear settings form on modal close
+                document
+                    .getElementById(
+                        "commentForm" + p__Films[l__Film__Index].identifier
+                    )
+                    .reset();
+                if (g__Logged__User != undefined)
+                    document.getElementById(
+                        "inputNickname" + p__Films[l__Film__Index].identifier
+                    ).value = g__Logged__User.name;
+            }
+        );
     }
 }
 
-function appendComments(l__Row__Opinion__Section__Comments__View, comments, identifier) {
-    
+function appendComments(
+    l__Row__Opinion__Section__Comments__View,
+    comments,
+    identifier
+) {
     for (let l__Comment__Index in comments) {
         let l__Card = document.createElement("div");
-        l__Card.setAttribute("class", "card border-dark mx-3 mx-lg-4 pb-3 mb-3");
+        l__Card.setAttribute(
+            "class",
+            "card border-dark mx-3 mx-lg-4 pb-3 mb-3"
+        );
 
         // NEW
         let l__Card__Header = document.createElement("div");
@@ -689,33 +1017,52 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, iden
 
         // NEW
         let l__Card__Header__Nickname = document.createElement("div");
-        l__Card__Header__Nickname.textContent = comments[l__Comment__Index].author.name;
+        l__Card__Header__Nickname.textContent =
+            comments[l__Comment__Index].author.name;
         l__Card__Header__Nickname.setAttribute("class", "col-6 p-2");
         // NEW
         l__Card__Header.appendChild(l__Card__Header__Nickname);
 
-        if (g__Logged__User != undefined && g__Logged__User.name == comments[l__Comment__Index].author.name) {
+        if (
+            g__Logged__User != undefined &&
+            g__Logged__User.name == comments[l__Comment__Index].author.name
+        ) {
             // NEW
             let l__Card__Buttons = document.createElement("div");
-            l__Card__Buttons.setAttribute("class", "col-6 d-flex justify-content-end");
+            l__Card__Buttons.setAttribute(
+                "class",
+                "col-6 d-flex justify-content-end"
+            );
 
             // NEW
             let l__Card__Edit__Button = document.createElement("button");
-            l__Card__Edit__Button.setAttribute("id", ("film" + identifier + "edit" + l__Comment__Index));
+            l__Card__Edit__Button.setAttribute(
+                "id",
+                "film" + identifier + "edit" + l__Comment__Index
+            );
             l__Card__Edit__Button.setAttribute("class", "btn border-0");
 
             // NEW
             let l__Card__Edit__Button__Icon = document.createElement("i");
-            l__Card__Edit__Button__Icon.setAttribute("class", "fa-solid fa-pencil");
+            l__Card__Edit__Button__Icon.setAttribute(
+                "class",
+                "fa-solid fa-pencil"
+            );
 
             // NEW
             let l__Card__Delete__Button = document.createElement("button");
-            l__Card__Delete__Button.setAttribute("id", ("film" + identifier + "delete" + l__Comment__Index));
+            l__Card__Delete__Button.setAttribute(
+                "id",
+                "film" + identifier + "delete" + l__Comment__Index
+            );
             l__Card__Delete__Button.setAttribute("class", "btn border-0");
 
             // NEW
             let l__Card__Delete__Button__Icon = document.createElement("i");
-            l__Card__Delete__Button__Icon.setAttribute("class", "fa-solid fa-trash");
+            l__Card__Delete__Button__Icon.setAttribute(
+                "class",
+                "fa-solid fa-trash"
+            );
 
             // NEW
             l__Card__Edit__Button.appendChild(l__Card__Edit__Button__Icon);
@@ -729,7 +1076,8 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, iden
         l__Card__Body.setAttribute("class", "card-body text-dark");
 
         let l__Card__Body__Title = document.createElement("h5");
-        l__Card__Body__Title.textContent = comments[l__Comment__Index].contentRating.name + "/5";
+        l__Card__Body__Title.textContent =
+            comments[l__Comment__Index].contentRating.name + "/5";
         l__Card__Body__Title.setAttribute("class", "card-title");
 
         let l__Card__Body__Text = document.createElement("p");
@@ -745,54 +1093,78 @@ function appendComments(l__Row__Opinion__Section__Comments__View, comments, iden
         l__Row__Opinion__Section__Comments__View.appendChild(l__Card);
 
         // NEW
-        $(("#film" + identifier + "edit" + l__Comment__Index)).click(function (event) {
+        $("#film" + identifier + "edit" + l__Comment__Index).click(function (
+            event
+        ) {
             console.log("p__Film.identifier: " + identifier);
-            console.log("l__Comment__Index: " + l__Comment__Index)
+            console.log("l__Comment__Index: " + l__Comment__Index);
             // On comment modal show, insert user name
 
-            document.getElementById(("inputRate" + identifier)).value = g__Films.filter(film => film.identifier == identifier)[0].comment[l__Comment__Index].contentRating.name;
-            document.getElementById(("inputComment" + identifier)).value = g__Films.filter(film => film.identifier == identifier)[0].comment[l__Comment__Index].name;
+            document.getElementById("inputRate" + identifier).value =
+                g__Films.filter(
+                    (film) => film.identifier == identifier
+                )[0].comment[l__Comment__Index].contentRating.name;
+            document.getElementById("inputComment" + identifier).value =
+                g__Films.filter(
+                    (film) => film.identifier == identifier
+                )[0].comment[l__Comment__Index].name;
 
-            handleEditComment(g__Films.filter(film => film.identifier == identifier)[0].comment, l__Comment__Index, identifier);
+            handleEditComment(
+                g__Films.filter((film) => film.identifier == identifier)[0]
+                    .comment,
+                l__Comment__Index,
+                identifier
+            );
         });
 
         // NEW
-        $(("#film" + identifier + "delete" + l__Comment__Index)).click(function (event) {
-
+        $("#film" + identifier + "delete" + l__Comment__Index).click(function (
+            event
+        ) {
             deleteCommentFilmIdentifier = identifier;
             deleteCommentIndex = l__Comment__Index;
             // On comment modal show, insert user name
-            NewAlert('warning', "¿Quieres borrar este comentario?", ' ', true, "Delete comment", true);
+            NewAlert(
+                "warning",
+                "¿Quieres borrar este comentario?",
+                " ",
+                true,
+                "Delete comment",
+                true
+            );
         });
     }
 }
 
 function handleEditComment(comments, commentIndex, identifier) {
-
     var cloneArray = comments.slice();
 
-    cloneArray.splice(commentIndex,1);
+    cloneArray.splice(commentIndex, 1);
 
-    g__Films.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
+    g__Films.filter((film) => film.identifier == identifier)[0].comment = [
+        ...cloneArray,
+    ];
 
     // Update peliculas.json
     saveCommentChanges(g__Films);
 }
 
 function handleDeleteComment(identifier, pDeleteCommentIndex) {
+    let cloneArray = g__Films
+        .filter((film) => film.identifier == identifier)[0]
+        .comment.slice();
 
-    let cloneArray = g__Films.filter(film => film.identifier == identifier)[0].comment.slice();
+    cloneArray.splice(pDeleteCommentIndex, 1);
 
-    cloneArray.splice(pDeleteCommentIndex,1);
-
-    g__Films.filter(film => film.identifier == identifier)[0].comment = [...cloneArray];
+    g__Films.filter((film) => film.identifier == identifier)[0].comment = [
+        ...cloneArray,
+    ];
 
     // Update peliculas.json
     saveCommentChanges(g__Films);
 }
 
 async function createPopover(searchTerm) {
-
     let searchTermData = await fetchWikipediaInfo(searchTerm);
 
     let popover = document.createElement("a");
@@ -810,11 +1182,12 @@ async function createPopover(searchTerm) {
 }
 
 function createTwitterWidgets(identifier, tweet) {
-    let commentSection = document.getElementById(("commentSection"+identifier));
+    let commentSection = document.getElementById("commentSection" + identifier);
 
     let tweetContent = "<p>No tweet avaliable</p>";
 
     if (tweet.length > 0) tweetContent = tweet[0].sharedContent.text;
 
-    commentSection.innerHTML += '<div class="col-12 col-md-5 p-3">' + tweetContent + '</div>';
+    commentSection.innerHTML +=
+        '<div class="col-12 col-md-5 p-3">' + tweetContent + "</div>";
 }
