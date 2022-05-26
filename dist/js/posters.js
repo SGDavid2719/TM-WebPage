@@ -16,7 +16,7 @@ async function generatePosters(p__Films) {
 
         createTwitterWidgets(p__Films[l__Index].identifier, g__Tweets.filter(tweet => tweet.headline == p__Films[l__Index].identifier));
 
-        setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
+        //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
 
     // Important

@@ -1,5 +1,5 @@
 // Globals
-var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined, g__Books = [];
+var g__Films = [], g__Users = [], g__Tweets = [], g__Logged__User = undefined, g__Recips = [];
 
 $(document).ready(function () {
     $('#loaderModal').modal('toggle');
@@ -28,7 +28,21 @@ $(document).ready(function () {
     fetch('./json/usuarios.json')
         .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
         .then((result) => result.json())
-        .then((result) =>  g__Users = result);
+        .then((result) => g__Users = result);
+
+    fetch('https://gastronomiaesp.000webhostapp.com/JSON/gastronomia.json')
+    .catch((error) => console.log("Hubo un error al cargar el JSON, número: " + error.status + ", " + error.statusText))
+    .then((result) => result.json())
+    .then((result) => {
+
+        g__Recips = result.gastronomia;
+
+        console.log(g__Recips)
+
+        const slicedArray = g__Recips.slice(0, 5);
+
+        createDishesCarousel(slicedArray);
+    });
     
     // Basic search button
 	$("#basicSearchBtn").click(function () {
