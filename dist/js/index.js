@@ -22,6 +22,18 @@ $(document).ready(function () {
             g__Tweets = result;
         });
 
+    fetch("./json/usuarios.json")
+        .catch((error) =>
+            console.log(
+                "Hubo un error al cargar el JSON, número: " +
+                    error.status +
+                    ", " +
+                    error.statusText
+            )
+        )
+        .then((result) => result.json())
+        .then((result) => (g__Users = result));
+
     fetch("./json/peliculas.json")
         .catch((error) =>
             console.log(
@@ -39,22 +51,12 @@ $(document).ready(function () {
             fillFilters();
             enablePostersButtons(g__Films);
 
+            obtener_claves_session();
+
             setTimeout(() => {
                 $("#loaderModal").modal("hide");
             }, 1000);
         });
-
-    fetch("./json/usuarios.json")
-        .catch((error) =>
-            console.log(
-                "Hubo un error al cargar el JSON, número: " +
-                    error.status +
-                    ", " +
-                    error.statusText
-            )
-        )
-        .then((result) => result.json())
-        .then((result) => (g__Users = result));
 
     fetch("https://gastronomiaesp.000webhostapp.com/JSON/gastronomia.json")
         .catch((error) =>
