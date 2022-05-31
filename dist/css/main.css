@@ -1,53 +1,42 @@
 .navbar-brand > img {
     filter: invert(55%) sepia(100%) saturate(3.5);
 }
-
 .masthead-heading.text-uppercase {
     color: orange;
 }
-
 header.masthead {
     padding-top: 10.5rem;
 }
-
 .portfolio-link > .img-fluid:hover {
     opacity: 0.85;
 }
-
 .incr-img {
     height: 5.2rem;
 }
-
 a.img-brand-link > .img-fluid {
     filter: grayscale(100%) opacity(0.5);
 }
-
 a.portfolio-link > .img-fluid {
     float: left;
     height: 70vh !important;
     object-fit: cover;
 }
-
 .portfolio-modal .modal-content {
     text-align: left !important;
 }
-
 #searchForm {
     display: inline-flex;
     width: 100%;
-    padding: 10px
+    padding: 10px;
 }
-
 #searchInput {
     margin-left: auto;
     margin-right: 10px;
     width: 50%;
 }
-
 #searchBtn {
     margin-right: auto;
 }
-
 @media only screen and (max-width: 1000px) {
     #basicSearchForm,
     #basicSearchBtn,
@@ -55,40 +44,32 @@ a.portfolio-link > .img-fluid {
         display: none;
     }
 }
-
 .scrollviewContent {
     height: 600px;
     overflow-y: scroll;
     padding-left: 0;
 }
-
 .scrollviewContent > .card {
     transition: transform 1s;
 }
-
 .scrollviewContent > .card:hover {
     transform: scale(1.1);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
-
 #loginModalDialog {
     max-width: 60%;
 }
-
 .form-check {
     padding-left: 2rem;
 }
-
 #userModalDialog,
 #userSettingsModal {
     max-width: 60%;
 }
-
 .modalIframe {
     width: 90%;
     height: 90%;
 }
-
-.popover{
-    max-width:30vw;
+.popover {
+    max-width: 30vw;
 }

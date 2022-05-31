@@ -24,9 +24,6 @@ async function generatePosters(p__Films) {
         //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
     }
 
-    // Important
-    twttr.widgets.load();
-
     const popoverTriggerList = [].slice.call(
         document.querySelectorAll('[data-bs-toggle="popover"]')
     );
@@ -371,7 +368,8 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     );
 
     // Create row second col div list item content text node
-    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = document.createTextNode(p__Film.musicBy.name);    
+    let l__Row__Second__Col__Div__List__Item__Music__Text__Node =
+        document.createTextNode(p__Film.musicBy.name);
     //await createPopover(p__Film.musicBy.name);
 
     // Append text node into item

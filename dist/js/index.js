@@ -56,7 +56,8 @@ $(document).ready(function () {
             setTimeout(() => {
                 $("#loaderModal").modal("hide");
             }, 1000);
-        });
+        })
+        .then(() => twttr.widgets.load());
 
     fetch("https://gastronomiaesp.000webhostapp.com/JSON/gastronomia.json")
         .catch((error) =>

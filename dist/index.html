@@ -12,14 +12,10 @@
     <script src="js/libraries/jquery.min.js"></script>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="js/libraries/fontawesome.all.js"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/loader.css" rel="stylesheet" />
-    <!-- Sweet Alert 2 -->
-    <script src="js/libraries/sweetalert2.all.min.js"></script>
     <!-- Tailwind CSS -->
     <link href="css/output.css" rel="stylesheet">
     <!-- OWN JS -->
@@ -69,21 +65,20 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#films">Peliculas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-user"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a id="userSettings" class="dropdown-item d-none" data-bs-toggle="modal"
-                                        data-bs-target="#userSettingsModal">Ajustes</a></li>
+                                <li><button id="userSettings" class="dropdown-item d-none" data-bs-toggle="modal"
+                                        data-bs-target="#userSettingsModal">Ajustes</button></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a id="userLogOutBtn" class="dropdown-item d-none">Cerrar sesión</a></li>
-                                <li><a id="userLogInBtn" class="dropdown-item" data-bs-toggle="modal"
-                                        data-bs-target="#userModal">Iniciar sesión</a></li>
+                                <li><button id="userLogOutBtn" class="dropdown-item d-none">Cerrar sesión</button></li>
+                                <li><button id="userLogInBtn" class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#userModal">Iniciar sesión</button></li>
                             </ul>
                         </li>
                         <li class="nav-item d-block d-lg-none"><button id="advancedSearch2" type="button"
@@ -313,35 +308,6 @@
 
         </div>
     </section>
-    <!-- Team-->
-    <section class="page-section bg-light" id="team">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">Nuestro equipo</h2>
-                <h3 class="section-subheading text-muted">Tecnología Multimedia</h3>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/david.webp" alt="David's photo" />
-                        <h4>David Santomé Galván</h4>
-                        <br>
-                        <i aria-hidden="true" class="fab fa-linkedin-in"></i>
-                        <i aria-hidden="true" class="fa-brands fa-github"></i>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/pedro.webp" alt="Pedro's photo" />
-                        <h4>Pedro Font Antón</h4>
-                        <br>
-                        <i aria-hidden="true" class="fab fa-linkedin-in"></i>
-                        <i aria-hidden="true" class="fa-brands fa-github"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Advertising -->
     <section class="page-section bg-light flex flex-col" id="advertising">
@@ -350,7 +316,7 @@
         </div>
     </section>
 
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="js/libraries/twitter.widgets.js" charset="utf-8"></script>
 
     <!-- Clients-->
     <div id="clients" class="py-5">
@@ -388,11 +354,15 @@
     <div id="portfolioContainer"></div>
 
     <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/libraries/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <!-- Scroll reveal -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/libraries/scrollreveal.js"></script>
+    <!-- Sweet Alert 2 -->
+    <script async src="js/libraries/sweetalert2.all.min.js"></script>
+    <!-- Font Awesome icons (free version)-->
+    <script async src="js/libraries/fontawesome.all.js"></script>
 </body>
 
 </html>
