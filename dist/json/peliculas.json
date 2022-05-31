@@ -70,7 +70,7 @@
     "identifier": 0,
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=kVrqfYjkTdQ"
+      "name": "https://www.youtube.com/embed/kVrqfYjkTdQ"
     },
     "comment": [ 
       {
@@ -167,7 +167,7 @@
     "name": "1898. Los últimos de Filipinas",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=-y1Qr1dRb6I"
+      "name": "https://www.youtube.com/embed/-y1Qr1dRb6I"
     },
     "comment": [ ],
     "image": [
@@ -252,7 +252,7 @@
     "name": "Avengers: Endgame",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=TcMBFSGVi1c"
+      "name": "https://www.youtube.com/embed/TcMBFSGVi1c"
     },
     "comment": [ ],
     "image": [
@@ -337,7 +337,7 @@
     "name": "The Godfather",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=sY1S34973zA"
+      "name": "https://www.youtube.com/embed/sY1S34973zA"
     },
     "comment": [ ],
     "image": [
@@ -422,7 +422,7 @@
     "name": "Joker",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=EIyZqNbZQI8"
+      "name": "https://www.youtube.com/embed/EIyZqNbZQI8"
     },
     "comment": [ ],
     "image": [
@@ -507,7 +507,7 @@
     "name": "Lo dejo cuando quiera",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=JZOSwUpHLdA&ab_channel=VaDeTrailers"
+      "name": "https://www.youtube.com/embed/JZOSwUpHLdA"
     },
     "comment": [ ],
     "image": [
@@ -592,7 +592,7 @@
     "name": "Los lunes al sol",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=ZQa9oJgPRBA"
+      "name": "https://www.youtube.com/embed/ZQa9oJgPRBA"
     },
     "comment": [ ],
     "image": [
@@ -677,7 +677,7 @@
     "name": "Mientras dure la guerra",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=5_4PoAC2KTQ&ab_channel=Buenavistacine"
+      "name": "https://www.youtube.com/embed/5_4PoAC2KTQ"
     },
     "comment": [ ],
     "image": [
@@ -762,7 +762,7 @@
     "name": "Cien años de perdón",
     "trailer": {
       "@type": "VideoObject",
-      "name": "https://www.youtube.com/watch?v=RwU2s0Qs2ys&ab_channel=20thCenturyStudiosEspa%C3%B1a"
+      "name": "https://www.youtube.com/embed/RwU2s0Qs2ys"
     },
     "comment": [ ],
     "image": [
