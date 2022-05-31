@@ -15,7 +15,7 @@ function createDishesCarousel(dishes) {
             content += "<div class='carousel-item relative float-left w-full'>";
 
         content +=
-            "<img src='./assets/img/dishes/dish.jpg' class='block w-full' alt=''>";
+            "<img src='./assets/img/dishes/dish.webp' class='block w-full' alt=''>";
 
         content +=
             "<div class='carousel-caption hidden md:block absolute text-center h-auto'>";

@@ -9,21 +9,17 @@
     <meta name="author" content="David Santomé & Pedro Font">
     <title>Peliculas-TM</title>
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/libraries/jquery.min.js"></script>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <script src="js/libraries/fontawesome.all.js"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/loader.css" rel="stylesheet" />
     <!-- Sweet Alert 2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"
-        integrity="sha256-jAlCMntTd9fGH88UcgMsYno5+/I0cUCWdSjJ9qHMFRY=" crossorigin="anonymous"></script>
+    <script src="js/libraries/sweetalert2.all.min.js"></script>
     <!-- Tailwind CSS -->
     <link href="css/output.css" rel="stylesheet">
     <!-- OWN JS -->
@@ -303,7 +299,7 @@
     <section class="page-section bg-light" id="films">
         <div class="container">
             <div class="text-center mb-5">
-                <h1 class="section-heading text-uppercase">Películas TM</h1>
+                <h1 class="section-heading text-uppercase font-bold text-3xl">Películas TM</h1>
                 <div class="row container d-flex justify-content-center pb-2">
                     <video class="w-50" autoplay="true" muted="muted" loop>
                         <source src="./assets/video/recording.mp4" type="video/mp4">
@@ -327,7 +323,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/david.jpg" alt="David's photo" />
+                        <img class="mx-auto rounded-circle" src="assets/img/team/david.webp" alt="David's photo" />
                         <h4>David Santomé Galván</h4>
                         <br>
                         <i aria-hidden="true" class="fab fa-linkedin-in"></i>
@@ -336,7 +332,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/pedro.jpg" alt="Pedro's photo" />
+                        <img class="mx-auto rounded-circle" src="assets/img/team/pedro.webp" alt="Pedro's photo" />
                         <h4>Pedro Font Antón</h4>
                         <br>
                         <i aria-hidden="true" class="fab fa-linkedin-in"></i>
@@ -349,7 +345,6 @@
 
     <!-- Advertising -->
     <section class="page-section bg-light flex flex-col" id="advertising">
-        <a href="https://twitter.com/intent/tweet?button_hashtag=follow&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <div class=" w-2/3 mx-auto text-center text-2xl font-semibold mb-2">Publicidad</div>
         <div id="dishesCarousel" class="carousel slide relative w-1/2 mx-auto" data-bs-ride="carousel">
         </div>
