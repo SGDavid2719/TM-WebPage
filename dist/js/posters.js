@@ -371,8 +371,8 @@ async function generateFilmModal(p__PortfolioContainer, p__Film) {
     );
 
     // Create row second col div list item content text node
-    let l__Row__Second__Col__Div__List__Item__Music__Text__Node =
-        await createPopover(p__Film.musicBy.name);
+    let l__Row__Second__Col__Div__List__Item__Music__Text__Node = document.createTextNode(p__Film.musicBy.name);    
+    //await createPopover(p__Film.musicBy.name);
 
     // Append text node into item
     l__Row__Second__Col__Div__List__Item__Music.appendChild(
