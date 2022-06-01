@@ -9,13 +9,11 @@ function createDishesCarousel(dishes) {
 
     for (dishIndex in dishes) {
         if (dishIndex == 0) {
-            content +=
-                "<div class='carousel-item active relative float-left w-full'>";
-        } else
-            content += "<div class='carousel-item relative float-left w-full'>";
+            content += "<div class='carousel-item active relative w-full'>";
+        } else content += "<div class='carousel-item relative w-full'>";
 
         content +=
-            "<img src='./assets/img/dishes/dish.webp' class='block w-full' alt=''>";
+            "<img src='./assets/img/dishes/dish.webp' class='block w-full' alt='' width='640' height='360'>";
 
         content +=
             "<div class='carousel-caption hidden md:block absolute text-center h-auto'>";
@@ -24,7 +22,9 @@ function createDishesCarousel(dishes) {
             dishes[dishIndex].name +
             "</h5>";
         content +=
-            "<p class='text-dark'>" + dishes[dishIndex].description + "</p>";
+            "<p class='text-dark text-sm'>" +
+            dishes[dishIndex].description +
+            "</p>";
         content += "</div>";
 
         content += "</div>";

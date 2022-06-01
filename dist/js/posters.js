@@ -1,4 +1,4 @@
-var deleteCommentFilmIdentifier = undefined,
+let deleteCommentFilmIdentifier = undefined,
     deleteCommentIndex = undefined;
 
 async function generatePosters(p__Films) {
@@ -21,7 +21,15 @@ async function generatePosters(p__Films) {
             )
         );
 
-        //setTimeout(fetchYoutubeVideo(("Traile%20" + p__Films[l__Index].name), ("youtubeVideo" + l__Index)), 10000);
+        /*
+        setTimeout(
+            fetchYoutubeVideo(
+                "Trailer%20" + p__Films[l__Index].name,
+                "youtubeVideo" + l__Index
+            ),
+            10000
+        );
+        */
     }
 
     const popoverTriggerList = [].slice.call(
@@ -71,6 +79,8 @@ function generateFilmPoster(p__FilmsContainer, p__Film) {
     l__Portfolio__Img.setAttribute("class", "img-fluid");
     l__Portfolio__Img.setAttribute("src", p__Film.image[0].name);
     l__Portfolio__Img.setAttribute("alt", p__Film.name);
+    l__Portfolio__Img.setAttribute("width", "504");
+    l__Portfolio__Img.setAttribute("height", "720");
 
     // Append image into a
     l__Portfolio__Link__A.appendChild(l__Portfolio__Img);
