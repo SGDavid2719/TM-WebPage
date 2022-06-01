@@ -20,6 +20,12 @@ $(document).ready(function () {
         .then((result) => result.json())
         .then((result) => {
             g__Tweets = result;
+
+            const head = document.querySelector("head");
+            const ld_json = document.createElement("script");
+            ld_json.setAttribute("type", "application/ld+json");
+            ld_json.innerHTML = JSON.stringify(g__Tweets);
+            head.appendChild(ld_json);
         });
 
     fetch("./json/usuarios.json")
@@ -32,7 +38,9 @@ $(document).ready(function () {
             )
         )
         .then((result) => result.json())
-        .then((result) => (g__Users = result));
+        .then((result) => {
+            g__Users = result;
+        });
 
     fetch("./json/peliculas.json")
         .catch((error) =>
@@ -46,6 +54,12 @@ $(document).ready(function () {
         .then((result) => result.json())
         .then(async (result) => {
             g__Films = result;
+
+            const head = document.querySelector("head");
+            const ld_json = document.createElement("script");
+            ld_json.setAttribute("type", "application/ld+json");
+            ld_json.innerHTML = JSON.stringify(g__Films);
+            head.appendChild(ld_json);
 
             await generatePosters(g__Films);
             fillFilters();
@@ -72,8 +86,11 @@ $(document).ready(function () {
         .then((result) => {
             g__Recips = result.gastronomia;
 
-            // console.log("g__Recips")
-            // console.log(g__Recips)
+            const head = document.querySelector("head");
+            const ld_json = document.createElement("script");
+            ld_json.setAttribute("type", "application/ld+json");
+            ld_json.innerHTML = JSON.stringify(g__Recips);
+            head.appendChild(ld_json);
 
             const slicedArray = g__Recips.slice(0, 5);
 

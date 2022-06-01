@@ -1,3 +1,10 @@
+.svg {
+    overflow: hidden;
+    box-sizing: content-box;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.125em;
+}
 .navbar-brand > img {
     filter: invert(55%) sepia(100%) saturate(3.5);
 }
