@@ -1171,7 +1171,7 @@ async function createPopover(searchTerm) {
     );
     popover.setAttribute("role", "button");
     popover.setAttribute("data-bs-toggle", "popover");
-    popover.setAttribute("data-bs-trigger", "focus");
+    popover.setAttribute("trigger", "manual");
     popover.setAttribute("data-bs-placement", "right");
     popover.setAttribute("title", searchTerm);
     popover.setAttribute("data-bs-content", searchTermData);
